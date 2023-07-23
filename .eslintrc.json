@@ -1,24 +1,18 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "plugin:nuxt/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:vue/vue3-recommended"
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "parser": "@typescript-eslint/parser",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint"
-    ],
-    "rules": {
-        "vue/multi-word-component-names": 0,
-        "semi": ["error", "never"],
-	    "quotes": ["error", "single"]
-    }
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:nuxt/recommended", "plugin:@typescript-eslint/recommended", "plugin:vue/vue3-essential"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "vue/multi-word-component-names": 0,
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"]
+  }
 }
