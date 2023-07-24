@@ -44,14 +44,18 @@ type Data = {
   data: SideBarData[]
 }
 const props = defineProps<Data>()
+
+function isActive(url: string, path: string) {
+  return (url === path) || (path === '/' && url === '/recommended')
+}
 </script>
 
 <template>
   <div class="index-nav">
     <nav class="side-navigator-wrap">
       <div class="nav-item-wrap" v-for="d in props.data" :key="d.text">
-        <div class="nav-item-content" :class="{ 'active-nav': d.url === $route.path }">
-          <a class="nav-item" :href="d.url" :class="{ 'route-active': d.url === $route.path }">
+        <div class="nav-item-content" :class="{ 'active-nav': isActive(d.url, $route.path) }">
+          <a class="nav-item" :href="d.url" :class="{ 'route-active': isActive(d.url, $route.path) }">
             <component :is="getComponent(d.url.slice(1))"></component>
             <span class="nav-item-text">{{ d.text }}</span>
           </a>
