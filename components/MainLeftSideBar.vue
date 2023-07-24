@@ -1,4 +1,41 @@
 <script setup lang="ts">
+import Following from '~/components/SVG/Following.vue'
+import Recommended from '~/components/SVG/Recommended.vue'
+import Backend from '~/components/SVG/Backend.vue'
+import Frontend from '~/components/SVG/Frontend.vue'
+import Android from '~/components/SVG/Android.vue'
+import Ios from '~/components/SVG/Ios.vue'
+import Ai from '~/components/SVG/Ai.vue'
+import Freebie from '~/components/SVG/Freebie.vue'
+import Career from '~/components/SVG/Career.vue'
+import Article from '~/components/SVG/Article.vue'
+
+function getComponent(s: string) {
+  switch (s) {
+    case 'following':
+      return Following
+    case 'recommended':
+      return Recommended
+    case 'backend':
+      return Backend
+    case 'frontend':
+      return Frontend
+    case 'android':
+      return Android
+    case 'ios':
+      return Ios
+    case 'ai':
+      return Ai
+    case 'freebie':
+      return Freebie
+    case 'career':
+      return Career
+    case 'article':
+      return Article
+  }
+  return ''
+}
+
 type SideBarData = {
   text: string
   url: string
@@ -15,6 +52,7 @@ const props = defineProps<Data>()
       <div class="nav-item-wrap" v-for="d in props.data" :key="d.text">
         <div class="nav-item-content" :class="{ 'active-nav': d.url === $route.path }">
           <a class="nav-item" :href="d.url" :class="{ 'route-active': d.url === $route.path }">
+            <component :is="getComponent(d.url.slice(1))"></component>
             <span class="nav-item-text">{{ d.text }}</span>
           </a>
         </div>
@@ -92,5 +130,15 @@ const props = defineProps<Data>()
 .active-nav .nav-item,
 .active-nav .nav-item svg {
   color: var(--juejin-font-brand1-normal);
+}
+
+img {
+  color: var(--juejin-font-3);
+}
+
+.nav-item svg {
+  vertical-align: middle;
+  margin-right: 12px;
+  color: var(--juejin-font-3);
 }
 </style>
