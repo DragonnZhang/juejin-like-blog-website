@@ -3,6 +3,13 @@ body {
   margin: 0;
   padding: 0;
   font-size: 12px;
+  background-color: var(--juejin-background-color);
+  line-height: normal;
+}
+
+body {
+  word-break: break-word;
+  overflow-y: scroll;
 }
 
 a {
@@ -57,9 +64,15 @@ button {
 
 :root {
   --juejin-navigation: #181818;
+  --juejin-font-1: hsla(0, 0%, 100%, 0.8);
   --juejin-font-2: hsla(0, 0%, 100%, 0.7);
   --juejin-font-3: hsla(0, 0%, 100%, 0.46);
   --juejin-brand-2-hover: #0f66d6;
   --juejin-brand-1-normal: #1b73e5;
   --juejin-font-white: #fff;
+  --juejin-font-brand1-normal: #4495ff;
+  --juejin-background-color: #000;
+  --juejin-layer-1: #181818;
+  --juejin-brand-5-light: rgba(30, 128, 255, 0.2);
+  --juejin-gray-3: hsla(0, 0%, 100%, 0.08);
 }
