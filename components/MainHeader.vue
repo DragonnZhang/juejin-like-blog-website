@@ -302,9 +302,4 @@ li.vip-entry {
     background-color: var(--juejin-brand-2-hover);
   }
 }
-
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> feature
