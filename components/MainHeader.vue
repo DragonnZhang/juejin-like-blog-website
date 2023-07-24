@@ -171,6 +171,7 @@ const props = defineProps<NavDataList>()
   color: var(--juejin-font-brand1-normal);
   font-weight: 500;
 }
+
 .nav-item {
   color: #86909c;
   padding: 0 1rem;
@@ -301,4 +302,9 @@ li.vip-entry {
     background-color: var(--juejin-brand-2-hover);
   }
 }
+
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> feature
