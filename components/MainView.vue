@@ -45,7 +45,7 @@ const data = ref([
 
 <template>
   <div class="view timeline-index-view">
-    <MainLeftSideBar :data="data" />
+    <MainViewLeftSideBar :data="data" />
   </div>
 </template>
 
