@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const data = ref([
+const leftBarData = ref([
   {
     text: '关注',
     url: '/following'
@@ -41,11 +41,36 @@ const data = ref([
     url: '/article'
   },
 ])
+
+const bodyData = ref([
+  {
+    id: 0,
+    title: '🚀3.40秒到231.84毫秒，我用Performance面板分析性能瓶颈全流程（多',
+    article_link: '',
+    abstract: 'Today is a good day.',
+    author: 'Dragon',
+    view: 1,
+    tags: [
+      {
+        tag: 'Vue',
+        url: ''
+      },
+      {
+        tag: 'Front-end',
+        url: ''
+      }
+    ],
+    likes: 0,
+    imgUrl: '',
+    alt: 'No content.'
+  }
+])
 </script>
 
 <template>
   <div class="view timeline-index-view">
-    <MainViewLeftSideBar :data="data" />
+    <MainViewLeftSideBar :data="leftBarData" />
+    <MainViewBody :data="bodyData" />
   </div>
 </template>
 

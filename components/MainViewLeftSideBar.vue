@@ -40,10 +40,10 @@ type SideBarData = {
   text: string
   url: string
 }
-type Data = {
+
+const props = defineProps<{
   data: SideBarData[]
-}
-const props = defineProps<Data>()
+}>()
 
 function isActive(url: string, path: string) {
   return (url === path) || (path === '/' && url === '/recommended')
