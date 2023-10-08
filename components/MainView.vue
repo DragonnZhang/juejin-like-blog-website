@@ -39,32 +39,36 @@ const leftBarData = ref([
   {
     text: '阅读',
     url: '/article'
-  },
-])
-
-const bodyData = ref([
-  {
-    id: 0,
-    title: '🚀3.40秒到231.84毫秒，我用Performance面板分析性能瓶颈全流程（多',
-    article_link: '',
-    abstract: 'Today is a good day.',
-    author: 'Dragon',
-    view: 1,
-    tags: [
-      {
-        tag: 'Vue',
-        url: ''
-      },
-      {
-        tag: 'Front-end',
-        url: ''
-      }
-    ],
-    likes: 0,
-    imgUrl: '',
-    alt: 'No content.'
   }
 ])
+
+const testData = {
+  title: '🚀3.40秒到231.84毫秒，我用Performance面板分析性能瓶颈全流程（多',
+  article_link: '',
+  abstract:
+    'Today is a good day.Today is a good day.Today is a good day.Today is a good day.Today is a good day.Today is a good day.Today is a good day.Today is a good day.',
+  author: 'Dragon',
+  view: 1,
+  tags: [
+    {
+      tag: 'Vue',
+      url: ''
+    },
+    {
+      tag: 'Front-end',
+      url: ''
+    }
+  ],
+  likes: 0,
+  imgUrl: '',
+  alt: 'No content.'
+}
+
+const bodyData = ref(
+  new Array(100).fill(0).map((v, index) => {
+    return Object.assign({ id: index }, testData)
+  })
+)
 </script>
 
 <template>
