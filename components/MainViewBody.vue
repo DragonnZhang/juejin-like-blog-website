@@ -4,7 +4,6 @@ import { MainData } from '@/utils/type'
 const props = defineProps<{
   data: MainData[]
 }>()
-console.log(props)
 </script>
 
 <template>
