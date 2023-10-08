@@ -118,10 +118,6 @@ const { data } = toRefs(props)
           overflow: hidden;
           text-overflow: ellipsis;
           word-break: break-all;
-
-          display: flex;
-          align-items: center;
-          color: var(--juejin-font-3);
         }
 
         .footer-divider {
@@ -179,6 +175,16 @@ const { data } = toRefs(props)
   }
 }
 
+.user-message {
+  display: flex;
+  align-items: center;
+  color: var(--juejin-font-3);
+}
+
+.user-message:hover {
+  color: var(--juejin-font-brand2-hover);
+}
+
 .action-list {
   display: flex;
   align-items: center;
@@ -205,5 +211,9 @@ const { data } = toRefs(props)
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.action-list > .item.like:hover {
+  color: var(--juejin-font-brand2-hover);
 }
 </style>
