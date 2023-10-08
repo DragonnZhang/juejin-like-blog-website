@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import View from '~/components/SVG/View.vue'
+import Like from '~/components/SVG/Like.vue'
 import { MainData } from 'utils/type'
 
 const props = defineProps<{
@@ -22,9 +24,20 @@ const { data } = toRefs(props)
         </div>
         <div class="entry-footer">
           <ul class="action-list jh-timeline-action-area">
-            <li class="item meta-container"></li>
-            <li class="item view"></li>
-            <li class="item like"></li>
+            <li class="item meta-container">
+              <a href="" class="user-message">{{ data.author }}</a>
+              <div class="footer-divider"></div>
+            </li>
+            <li class="item view">
+              <View />
+              <span>{{ data.view }}</span>
+            </li>
+            <li class="item like">
+              <div class="liked-wrap">
+                <Like />
+              </div>
+              <span>{{ data.likes }}</span>
+            </li>
           </ul>
           <div class="entry-footer-tags">
             <a v-for="tag in data.tags" :key="tag.tag" :href="tag.url" class="footer-tag width-limited">{{ tag.tag }}</a>
@@ -96,6 +109,55 @@ const { data } = toRefs(props)
         justify-content: space-between;
         width: 100%;
         flex-wrap: wrap;
+
+        .user-message {
+          max-width: 132px;
+          font-size: 13px;
+          line-height: 22px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-break: break-all;
+
+          display: flex;
+          align-items: center;
+          color: var(--juejin-font-3);
+        }
+
+        .footer-divider {
+          width: 1px;
+          height: 12px;
+          background-color: var(--juejin-gray-1-1);
+          margin: 0 -13px 0 12px;
+        }
+
+        .entry-footer-tags {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          .footer-tag.width-limited {
+            max-width: 65px;
+          }
+
+          .footer-tag {
+            background-color: var(--juejin-gray-2);
+            padding: 0 6px;
+            border-radius: 2px;
+            box-sizing: border-box;
+            margin-left: 6px;
+            color: var(--juejin-font-3);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            min-height: 18px;
+            line-height: 18px;
+          }
+
+          .footer-tag:hover {
+            color: var(--juejin-font-brand2-hover);
+          }
+        }
       }
     }
 
@@ -115,5 +177,33 @@ const { data } = toRefs(props)
       object-fit: cover;
     }
   }
+}
+
+.action-list {
+  display: flex;
+  align-items: center;
+}
+
+.action-list > .item {
+  position: relative;
+  margin-right: 24px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--juejin-font-3);
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+}
+
+.action-list > .item span {
+  margin-left: 4px;
+}
+
+.action-list > .item.like .liked-wrap {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
