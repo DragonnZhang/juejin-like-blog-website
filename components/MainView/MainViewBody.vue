@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { MainData } from '@/utils/type'
-
-const props = defineProps<{
-  data: MainData[]
-}>()
+import MainViewBodyCardOrLoading from '~/components/MainView/MainViewBodyCardOrLoading.vue'
+import MainCardLoadingSkeleton from '~/components/MainView/MainCardLoadingSkeleton.vue'
 </script>
 
 <template>
@@ -22,11 +19,12 @@ const props = defineProps<{
         </nav>
       </header>
       <div class="entry-list-wrap">
-        <div class="entry-list list">
-          <li class="item" v-for="data in props.data" :key="data.id">
-            <MainCard :data="data" />
-          </li>
-        </div>
+        <ClientOnly>
+          <Suspense>
+            <MainViewBodyCardOrLoading />
+            <template #fallback><MainCardLoadingSkeleton /></template>
+          </Suspense>
+        </ClientOnly>
       </div>
     </div>
   </div>
@@ -58,16 +56,6 @@ const props = defineProps<{
         justify-content: space-between;
       }
     }
-  }
-}
-
-.entry-list {
-  width: 100%;
-  background-color: var(--juejin-layer-1);
-  position: relative;
-
-  .item {
-    transition: all 0.3s ease-in;
   }
 }
 

@@ -175,6 +175,10 @@ const { data } = toRefs(props)
   }
 }
 
+.entry:hover {
+  background: var(--juejin-gray-3);
+}
+
 .user-message {
   display: flex;
   align-items: center;

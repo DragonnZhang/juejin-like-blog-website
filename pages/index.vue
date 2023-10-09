@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import MainHeader from '~/components/MainView/MainHeader.vue'
+
 const data = ref([
   {
     text: '首页',
@@ -7,19 +9,19 @@ const data = ref([
   },
   {
     text: '沸点',
-    url: '/pins',
+    url: '/pins'
   },
   {
     text: '课程',
-    url: '/course',
+    url: '/course'
   },
   {
     text: '直播',
-    url: '/live',
+    url: '/live'
   },
   {
     text: '活动',
-    url: '/events/all',
+    url: '/events/all'
   },
   {
     text: '竞赛',
@@ -36,7 +38,7 @@ const data = ref([
   {
     text: '插件',
     url: ''
-  },
+  }
 ])
 const url = ref('https://p3-passport.byteimg.com/img/user-avatar/4d142fd37c164eb5069cab0af2bd8a03~100x100.awebp')
 </script>
