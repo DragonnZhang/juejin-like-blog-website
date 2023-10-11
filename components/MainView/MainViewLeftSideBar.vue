@@ -46,7 +46,7 @@ const props = defineProps<{
 }>()
 
 function isActive(url: string, path: string) {
-  return (url === path) || (path === '/' && url === '/recommended')
+  return url === path || (path === '/' && url === '/recommended')
 }
 </script>
 
@@ -79,6 +79,12 @@ function isActive(url: string, path: string) {
   background-color: var(--juejin-layer-1);
   max-height: calc(100vh - 101px);
   overflow-x: hidden;
+}
+
+@media (max-width: 1220px) {
+  .index-nav {
+    display: none;
+  }
 }
 
 .side-navigator-wrap {

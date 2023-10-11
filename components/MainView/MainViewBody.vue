@@ -1,40 +1,54 @@
 <script setup lang="ts">
 import MainViewBodyCardOrLoading from '~/components/MainView/MainViewBodyCardOrLoading.vue'
 import MainCardLoadingSkeleton from '~/components/MainView/MainCardLoadingSkeleton.vue'
+import MainViewRightSideBar from '~/components/MainView/MainViewRightSideBar.vue'
 </script>
 
 <template>
-  <div class="timeline-entry-list">
-    <div class="entry-list-container">
-      <header class="list-header">
-        <nav role="navigation" class="list-nav">
-          <ul class="nav-list left">
-            <li class="nav-item active">
-              <a href="/recommended">推荐</a>
-            </li>
-            <li class="nav-item">
-              <a href="/recommended">最新</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <div class="entry-list-wrap">
-        <ClientOnly>
-          <Suspense>
-            <MainViewBodyCardOrLoading />
-            <template #fallback><MainCardLoadingSkeleton /></template>
-          </Suspense>
-        </ClientOnly>
+  <div class="timeline-container">
+    <div class="timeline-content">
+      <div class="timeline-entry-list">
+        <div class="entry-list-container">
+          <header class="list-header">
+            <nav role="navigation" class="list-nav">
+              <ul class="nav-list left">
+                <li class="nav-item active">
+                  <a href="/recommended">推荐</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/recommended">最新</a>
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <div class="entry-list-wrap">
+            <ClientOnly>
+              <Suspense>
+                <MainViewBodyCardOrLoading />
+                <template #fallback><MainCardLoadingSkeleton /></template>
+              </Suspense>
+            </ClientOnly>
+          </div>
+        </div>
       </div>
+      <MainViewRightSideBar />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.timeline-container {
+  margin: 0 auto;
+
+  .timeline-content {
+    position: relative;
+  }
+}
 .timeline-entry-list {
   border-radius: 2px;
   width: 720px;
   position: relative;
+  margin-right: 23.33rem;
 
   .entry-list-container {
     background-color: var(--juejin-layer-1);
@@ -56,6 +70,13 @@ import MainCardLoadingSkeleton from '~/components/MainView/MainCardLoadingSkelet
         justify-content: space-between;
       }
     }
+  }
+}
+
+@media (max-width: 1000px) {
+  .timeline-entry-list {
+    margin: 0 auto;
+    width: 95vw;
   }
 }
 

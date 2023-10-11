@@ -57,6 +57,12 @@ main.container {
   max-width: 1200px;
 }
 
+@media (max-width: 1220px) {
+  main.container {
+    max-width: 1000px;
+  }
+}
+
 .container {
   position: relative;
   margin: 0 auto;
