@@ -2,10 +2,10 @@ type Tag = {
   tag: string
   url: string
 }
+
 type MainData = {
-  id: number
+  article_id: string
   title: string
-  article_link: string
   abstract: string
   author: string
   view: number

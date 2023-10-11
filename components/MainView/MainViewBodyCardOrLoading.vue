@@ -11,7 +11,7 @@ const bodyData = ref(articleList)
 
 <template>
   <div class="entry-list list">
-    <li class="item" v-for="data in bodyData" :key="data.id">
+    <li class="item" v-for="data in bodyData" :key="data.article_id">
       <MainCard :data="data" />
     </li>
   </div>
