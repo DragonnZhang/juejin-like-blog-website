@@ -11,29 +11,19 @@ import Career from '~/components/SVG/Career.vue'
 import Article from '~/components/SVG/Article.vue'
 
 function getComponent(s: string) {
-  switch (s) {
-    case 'following':
-      return Following
-    case 'recommended':
-      return Recommended
-    case 'backend':
-      return Backend
-    case 'frontend':
-      return Frontend
-    case 'android':
-      return Android
-    case 'ios':
-      return Ios
-    case 'ai':
-      return Ai
-    case 'freebie':
-      return Freebie
-    case 'career':
-      return Career
-    case 'article':
-      return Article
+  const strategy = {
+    following: Following,
+    recommended: Recommended,
+    backend: Backend,
+    frontend: Frontend,
+    android: Android,
+    ios: Ios,
+    ai: Ai,
+    freebie: Freebie,
+    career: Career,
+    article: Article
   }
-  return ''
+  return strategy[s as keyof typeof strategy]
 }
 
 type SideBarData = {
