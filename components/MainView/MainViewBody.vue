@@ -13,10 +13,10 @@ import MainViewRightSideBar from '~/components/MainView/MainViewRightSideBar.vue
             <nav role="navigation" class="list-nav">
               <ul class="nav-list left">
                 <li class="nav-item active">
-                  <a href="/recommended">推荐</a>
+                  <NuxtLink to="/recommended">推荐</NuxtLink>
                 </li>
                 <li class="nav-item">
-                  <a href="/recommended">最新</a>
+                  <NuxtLink to="/recommended">最新</NuxtLink>
                 </li>
               </ul>
             </nav>

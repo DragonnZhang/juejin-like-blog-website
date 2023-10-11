@@ -15,17 +15,17 @@ const { data } = toRefs(props)
     <div class="content-wrapper">
       <div class="content-main">
         <div class="title-row">
-          <a :href="data.article_link" :title="data.title" class="title">{{ data.title }}</a>
+          <NuxtLink :to="`/post/${data.article_id}`" class="title">{{ data.title }}</NuxtLink>
         </div>
         <div class="abstract">
-          <a :href="data.article_link">
+          <NuxtLink :to="`/post/${data.article_id}`">
             <div>{{ data.abstract }}</div>
-          </a>
+          </NuxtLink>
         </div>
         <div class="entry-footer">
           <ul class="action-list jh-timeline-action-area">
             <li class="item meta-container">
-              <a href="" class="user-message">{{ data.author }}</a>
+              <NuxtLink to="" class="user-message">{{ data.author }}</NuxtLink>
               <div class="footer-divider"></div>
             </li>
             <li class="item view">
