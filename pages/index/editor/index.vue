@@ -41,7 +41,7 @@ async function handleFileChange(e: Event) {
 
 <template>
   <ClientOnly>
-    <input type="file" :oninput="handleFileChange" />
+    <input type="file" :oninput="handleFileChange" accept=".md" />
     <div>
       <span>文件内容：</span>
       <pre v-html="fileContent"></pre>
