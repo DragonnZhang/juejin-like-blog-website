@@ -1,5 +1,6 @@
 <template>
   <header class="header editor-header">
+    <div class="left-box"></div>
     <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" />
     <div class="right-box"></div>
   </header>
@@ -13,6 +14,11 @@
   height: 5.334rem;
   background-color: var(--juejin-background-color);
   border-bottom: 1px solid #ddd;
+
+  .left-box {
+    padding-right: 14px;
+    cursor: pointer;
+  }
 
   .title-input {
     -webkit-box-flex: 1;
