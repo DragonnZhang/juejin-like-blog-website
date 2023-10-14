@@ -21,6 +21,7 @@
     "sass": "^1.64.1"
   },
   "dependencies": {
+    "@bytemd/plugin-frontmatter": "^1.21.0",
     "@bytemd/plugin-highlight-ssr": "^1.21.0",
     "@bytemd/vue-next": "^1.21.0"
   }
