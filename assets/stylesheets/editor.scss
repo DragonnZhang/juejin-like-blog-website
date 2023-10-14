@@ -1,0 +1,108 @@
+.main {
+  overflow: hidden;
+
+  .bytemd {
+    height: calc(100vh - 5.5rem);
+    border: 0;
+  }
+}
+
+.bytemd {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Helvetica,
+    Arial,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji;
+  color: var(--juejin-font-white);
+  background-color: var(--juejin-background-color);
+
+  .bytemd-toolbar {
+    background-color: var(--juejin-background-color-3);
+
+    .bytemd-toolbar-icon:hover {
+      background-color: var(--juejin-editor-selection-color);
+    }
+  }
+
+  .CodeMirror {
+    background-color: var(--juejin-background-color-2);
+
+    .CodeMirror-cursor {
+      border-left-color: var(--jujin-cursor-color);
+      border-left-width: 2px;
+    }
+
+    .CodeMirror-line {
+      .cm-header {
+        color: var(--juejin-editor-color);
+      }
+    }
+
+    .CodeMirror-selected {
+      background-color: var(--juejin-editor-selection-color);
+    }
+  }
+
+  pre > span {
+    color: var(--juejin-font-white);
+  }
+
+  .bytemd-dropdown-item:hover {
+    background-color: var(--juejin-editor-selection-color);
+  }
+
+  .tippy-box {
+    background-color: var(--juejin-background-color);
+    color: var(--juejin-font-white);
+  }
+}
+
+.markdown-body {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.5;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 38px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    line-height: inherit;
+    margin-top: 22px;
+    margin-bottom: 22px;
+  }
+
+  word-break: break-word;
+  line-height: 1.75;
+  font-weight: 400;
+  font-size: 16px;
+  overflow-x: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px 4%;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--juejin-editor-scroll-color);
+  outline: none;
+  border-radius: 2px;
+}
