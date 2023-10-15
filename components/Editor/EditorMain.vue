@@ -8,9 +8,10 @@ import zhHans from 'bytemd/lib/locales/zh_Hans.json'
 import highlight from '@bytemd/plugin-highlight-ssr'
 import frontmatter from '@bytemd/plugin-frontmatter'
 import { Editor } from '@bytemd/vue-next'
+import { themePlugin } from '~/utils/editorPlugin'
 
 const article = useArticle()
-const plugins = ref([highlight(), frontmatter()])
+const plugins = ref([highlight(), frontmatter(), themePlugin()])
 
 function handleChange(v: string) {
   article.value = v
