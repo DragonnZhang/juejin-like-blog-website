@@ -22,9 +22,11 @@ export function highlightPlugin(): BytemdPlugin {
 
       const { highlight } = file.frontmatter as { highlight: string }
 
+      const style = singleHighlightStyle()
       if (highlight) {
-        const style = singleHighlightStyle()
         style.innerHTML = highlightStyle[highlight as keyof typeof highlightStyle] ?? highlightStyle.github
+      } else {
+        style.innerHTML = ''
       }
     }
   }
@@ -37,9 +39,11 @@ export function themePlugin(): BytemdPlugin {
 
       const { theme } = file.frontmatter as { theme: string }
 
+      const style = singleThemeStyle()
       if (theme) {
-        const style = singleThemeStyle()
         style.innerHTML = themeStyle[theme as keyof typeof themeStyle] ?? ''
+      } else {
+        style.innerHTML = ''
       }
     }
   }
