@@ -2,16 +2,14 @@
 // import UploadButton from '~/components/Editor/UploadButton.vue'
 import { useArticle } from '~/composables/states'
 import 'bytemd/dist/index.css'
-import 'highlight.js/styles/monokai-sublime.css'
-// import 'highlight.js/styles/github.css'
 import zhHans from 'bytemd/lib/locales/zh_Hans.json'
 import highlight from '@bytemd/plugin-highlight-ssr'
 import frontmatter from '@bytemd/plugin-frontmatter'
 import { Editor } from '@bytemd/vue-next'
-import { themePlugin } from '~/utils/editorPlugin'
+import { highlightPlugin, themePlugin } from '~/utils/editorPlugin'
 
 const article = useArticle()
-const plugins = ref([highlight(), frontmatter(), themePlugin()])
+const plugins = ref([highlight(), frontmatter(), highlightPlugin(), themePlugin()])
 
 function handleChange(v: string) {
   article.value = v
