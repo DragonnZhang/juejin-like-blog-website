@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Upload from '~/components/SVG/Upload.vue'
 import { useArticle } from '~/composables/states'
 
 const article = useArticle()
@@ -41,19 +40,6 @@ async function handleFileChange(e: Event) {
 
 <template>
   <ClientOnly>
-    <label class="upload-button" for="upload">
-      <Upload />
-    </label>
     <input id="upload" type="file" :oninput="handleFileChange" accept=".md" v-show="false" />
   </ClientOnly>
 </template>
-
-<style scoped lang="scss">
-.upload-button svg {
-  display: block;
-  padding: 4px;
-  width: 24px;
-  height: 24px;
-  box-sizing: border-box;
-}
-</style>
