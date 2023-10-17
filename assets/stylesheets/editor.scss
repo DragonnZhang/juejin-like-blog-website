@@ -20,6 +20,10 @@
   color: var(--juejin-font-white);
   background-color: var(--juejin-background-color);
 
+  .bytemd-dropdown-title {
+    color: inherit;
+  }
+
   .bytemd-toolbar {
     background-color: var(--juejin-background-color-3);
 

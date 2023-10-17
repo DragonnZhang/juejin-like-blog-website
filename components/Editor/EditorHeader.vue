@@ -1,10 +1,20 @@
+<script setup lang="ts">
+import { useArticle } from '~/composables/states'
+
+const article = useArticle()
+
+function publishArticle() {
+  console.log(article.value)
+}
+</script>
+
 <template>
   <header class="header editor-header">
     <div class="left-box"></div>
     <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" />
     <div class="right-box">
       <div class="publish-popup">
-        <button class="publish-button">发布</button>
+        <button class="publish-button" @click="publishArticle">发布</button>
       </div>
     </div>
   </header>
