@@ -9,6 +9,9 @@ import Ai from '~/components/SVG/Ai.vue'
 import Freebie from '~/components/SVG/Freebie.vue'
 import Career from '~/components/SVG/Career.vue'
 import Article from '~/components/SVG/Article.vue'
+import { useTopVanish } from '~/composables/states'
+
+const topVanish = useTopVanish()
 
 function getComponent(s: string) {
   const strategy = {
@@ -41,7 +44,7 @@ function isActive(url: string, path: string) {
 </script>
 
 <template>
-  <div class="index-nav">
+  <div class="index-nav" :class="{ top: topVanish }">
     <nav class="side-navigator-wrap">
       <div class="nav-item-wrap" v-for="d in props.data" :key="d.text">
         <div class="nav-item-content" :class="{ 'active-nav': isActive(d.url, $route.path) }">
@@ -69,6 +72,15 @@ function isActive(url: string, path: string) {
   background-color: var(--juejin-layer-1);
   max-height: calc(100vh - 101px);
   overflow-x: hidden;
+}
+
+.index-nav.top {
+  top: 20px;
+}
+
+.index-nav::-webkit-scrollbar {
+  border-radius: 4px;
+  background-color: transparent;
 }
 
 @media (max-width: 1220px) {
