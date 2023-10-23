@@ -22,7 +22,7 @@ export default defineEventHandler(() => {
   }
 
   return {
-    articleList: new Array(2).fill(0).map(() => {
+    articleList: new Array(20).fill(0).map(() => {
       return testData
     })
   }
