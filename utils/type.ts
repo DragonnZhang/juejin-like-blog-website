@@ -15,4 +15,4 @@ type MainData = {
   alt: string
 }
 
-export { Tag, MainData }
+export type { Tag, MainData }
