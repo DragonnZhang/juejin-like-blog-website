@@ -3,8 +3,14 @@ import { useArticle } from '~/composables/states'
 
 const article = useArticle()
 
-function publishArticle() {
+async function publishArticle() {
   console.log(article.value)
+  await $fetch('/api/saveArticle', {
+    method: 'post',
+    body: {
+      article: article.value
+    }
+  })
 }
 </script>
 
