@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+
 const ArticleSchema = new mongoose.Schema(
   {
     title: {
@@ -6,6 +7,10 @@ const ArticleSchema = new mongoose.Schema(
       required: true
     },
     abstract: {
+      type: String,
+      required: true
+    },
+    content: {
       type: String,
       required: true
     },
@@ -34,4 +39,5 @@ const ArticleSchema = new mongoose.Schema(
 )
 
 const articleModel = mongoose.model('article', ArticleSchema, 'articles')
+
 export default articleModel
