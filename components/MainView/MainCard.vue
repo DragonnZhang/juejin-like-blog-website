@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import View from '~/components/SVG/View.vue'
 import Like from '~/components/SVG/Like.vue'
-import { MainData } from 'utils/type'
+import type { MainData } from '~/utils/type'
 
 const props = defineProps<{
   data: MainData
@@ -30,7 +30,7 @@ const { data } = toRefs(props)
             </li>
             <li class="item view">
               <View />
-              <span>{{ data.view }}</span>
+              <span>{{ data.views }}</span>
             </li>
             <li class="item like">
               <div class="liked-wrap">
