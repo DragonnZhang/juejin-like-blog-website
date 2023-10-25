@@ -14,6 +14,10 @@ const ArticleSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    publishTime: {
+      type: Date,
+      required: true
+    },
     content: {
       type: String,
       required: true
