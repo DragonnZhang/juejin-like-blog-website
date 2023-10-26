@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import View from '../SVG/View.vue'
 import Time from '../SVG/Time.vue'
+import { Viewer } from '@bytemd/vue-next'
+import highlight from '@bytemd/plugin-highlight-ssr'
+import frontmatter from '@bytemd/plugin-frontmatter'
+import highlightStyle from '~/utils/highlightStyle'
 
 const props = defineProps<{
   id: string
@@ -11,6 +15,15 @@ const { articleData } = await $fetch('/api/articleInfo', {
   body: {
     id: props.id
   }
+})
+
+const plugins = ref([highlight(), frontmatter()])
+
+onMounted(() => {
+  const style = document.createElement('style')
+  const body = document.querySelector('.markdown-body')
+  body?.insertBefore(style, body.firstChild)
+  style.innerHTML = highlightStyle['github']
 })
 </script>
 
@@ -36,14 +49,16 @@ const { articleData } = await $fetch('/api/articleInfo', {
           </div>
         </div>
         <div style="flex: 1"></div>
+        <span class="author-info-edit-btn" style="margin-left: 16px">编辑</span>
       </div>
-      <div class="article-viewer markdown-body result"></div>
+      <Viewer :value="articleData.content" :plugins="plugins" />
     </article>
     <div class="article-end"></div>
     <div class="post-comment"></div>
   </div>
 </template>
 
+<style scoped lang="scss" src="~/assets/stylesheets/article.scss"></style>
 <style scoped lang="scss">
 .article-area {
   margin-bottom: 1.67rem;
@@ -153,5 +168,14 @@ const { articleData } = await $fetch('/api/articleInfo', {
       }
     }
   }
+}
+
+.author-info-edit-btn {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  color: #1e80ff;
+  cursor: pointer;
 }
 </style>
