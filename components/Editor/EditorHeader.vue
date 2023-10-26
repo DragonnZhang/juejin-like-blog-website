@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import { useArticle } from '~/composables/states'
+import { useArticle, useArticleInformation } from '~/composables/states'
 
 const article = useArticle()
+const articleInfo = useArticleInformation()
 
 async function publishArticle() {
-  console.log(article.value)
   await $fetch('/api/saveArticle', {
     method: 'post',
     body: {
-      article: article.value
+      title: articleInfo.value.title,
+      abstract: 'This is a test article.',
+      author: 'Dragon',
+      publishTime: new Date(),
+      content: article.value,
+      views: 0,
+      likes: 0,
+      imgUrl: '1',
+      tags: []
     }
   })
 }
@@ -17,7 +25,7 @@ async function publishArticle() {
 <template>
   <header class="header editor-header">
     <div class="left-box"></div>
-    <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" />
+    <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" v-model="articleInfo.title" />
     <div class="right-box">
       <div class="publish-popup">
         <button class="publish-button" @click="publishArticle">发布</button>
