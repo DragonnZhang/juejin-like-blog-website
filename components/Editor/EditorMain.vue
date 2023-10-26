@@ -24,4 +24,4 @@ function handleChange(v: string) {
   </div>
 </template>
 
-<style lang="scss" src="~/assets/stylesheets/editor.scss"></style>
+<style scoped lang="scss" src="~/assets/stylesheets/editor.scss"></style>
