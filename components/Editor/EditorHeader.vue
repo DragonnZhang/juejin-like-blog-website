@@ -15,6 +15,8 @@ async function publishArticle() {
       content: article.value,
       views: 0,
       likes: 0,
+      collections: 0,
+      comments: 0,
       imgUrl: '1',
       tags: []
     }
