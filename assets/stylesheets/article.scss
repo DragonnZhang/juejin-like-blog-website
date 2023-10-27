@@ -77,4 +77,10 @@
   :deep(.hljs-subst) {
     color: #dcc6e0;
   }
+
+  :deep(img) {
+    max-width: 100%;
+    filter: brightness(0.94);
+    background-color: #f2f3f5;
+  }
 }
