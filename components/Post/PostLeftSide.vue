@@ -1,7 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LeftButton from './LeftButton.vue'
+import LeftBar from '~/components/SVG/LeftBar.vue'
+
+const props = defineProps<{
+  id: string
+  likes: number
+  comments: number
+  collections: number
+}>()
+</script>
 
 <template>
-  <div class="article-suspended-panel dynamic-data-ready"></div>
+  <div class="article-suspended-panel dynamic-data-ready">
+    <LeftBar />
+    <LeftButton @click.prevent="console.log(1)" :has-badge="props.likes !== 0" type="icon-zan" :badge-number="props.likes" />
+    <LeftButton :has-badge="props.likes !== 0" type="icon-comment" :badge-number="props.comments" />
+    <LeftButton :has-badge="props.likes !== 0" type="icon-collect" :badge-number="props.collections" />
+    <LeftButton :has-badge="false" type="icon-share" />
+  </div>
 </template>
 
 <style scoped lang="scss">
