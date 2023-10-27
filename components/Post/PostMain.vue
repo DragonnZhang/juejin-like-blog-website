@@ -8,14 +8,27 @@ const props = defineProps<{
   id: string
 }>()
 const { id } = toRefs(props)
+
+const { articleData } = await $fetch('/api/articleInfo', {
+  method: 'post',
+  body: {
+    id: id.value
+  }
+})
 </script>
 
 <template>
   <main class="container main-container">
     <div class="view column-view">
-      <PostContent :id="id" />
+      <PostContent
+        :id="id"
+        :title="articleData.title"
+        :content="articleData.content"
+        :author="articleData.author"
+        :views="articleData.views"
+      />
       <PostRecommendation :id="id" />
-      <PostLeftSide :id="id" />
+      <PostLeftSide :id="id" :likes="articleData.likes" :comments="articleData.comments" :collections="articleData.collections" />
       <PostRightSide :id="id" />
     </div>
   </main>

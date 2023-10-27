@@ -8,14 +8,11 @@ import highlightStyle from '~/utils/highlightStyle'
 
 const props = defineProps<{
   id: string
+  title: string
+  content: string
+  author: string
+  views: number
 }>()
-
-const { articleData } = await $fetch('/api/articleInfo', {
-  method: 'post',
-  body: {
-    id: props.id
-  }
-})
 
 const plugins = ref([highlight(), frontmatter()])
 
@@ -30,18 +27,18 @@ onMounted(() => {
 <template>
   <div class="main-area article-area">
     <article class="article">
-      <h1 class="article-title">{{ articleData.title }}</h1>
+      <h1 class="article-title">{{ props.title }}</h1>
       <div class="author-info-block">
         <div class="author-info-box">
           <div class="author-name">
             <a href="" class="username ellipsis">
-              <span class="name">{{ articleData.author }}</span>
+              <span class="name">{{ props.author }}</span>
             </a>
           </div>
           <div class="meta-box">
             <time datetime="2023-10-25T00:57:44.000Z" class="time">2023-10-25</time>
             <View />
-            <span class="views-count">{{ articleData.views }}</span>
+            <span class="views-count">{{ props.views }}</span>
             <span class="read-time">
               <Time />
               阅读9分钟
@@ -51,7 +48,7 @@ onMounted(() => {
         <div style="flex: 1"></div>
         <span class="author-info-edit-btn" style="margin-left: 16px">编辑</span>
       </div>
-      <Viewer :value="articleData.content" :plugins="plugins" />
+      <Viewer :value="props.content" :plugins="plugins" />
     </article>
     <div class="article-end"></div>
     <div class="post-comment"></div>
