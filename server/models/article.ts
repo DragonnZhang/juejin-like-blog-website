@@ -30,6 +30,14 @@ const ArticleSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
+    collections: {
+      type: Number,
+      required: true
+    },
+    comments: {
+      type: Number,
+      required: true
+    },
     imgUrl: {
       type: String,
       required: true
