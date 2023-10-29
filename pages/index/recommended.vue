@@ -7,6 +7,9 @@ definePageMeta({
 </script>
 
 <template>
+  <Head>
+    <Title>稀土掘金</Title>
+  </Head>
   <MainView />
 </template>
 

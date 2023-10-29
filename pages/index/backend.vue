@@ -3,6 +3,9 @@ import MainView from '~/components/MainView/MainView.vue'
 </script>
 
 <template>
+  <Head>
+    <Title>后端 - 稀土掘金</Title>
+  </Head>
   <MainView />
 </template>
 

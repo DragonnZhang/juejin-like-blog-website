@@ -6,15 +6,9 @@ import PostRightSide from './PostRightSide.vue'
 
 const props = defineProps<{
   id: string
+  articleData: any
 }>()
-const { id } = toRefs(props)
-
-const { articleData } = await $fetch('/api/articleInfo', {
-  method: 'post',
-  body: {
-    id: id.value
-  }
-})
+const { id, articleData } = toRefs(props)
 </script>
 
 <template>
