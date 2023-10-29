@@ -8,11 +8,18 @@ const props = defineProps<{
 }>()
 
 const { data } = toRefs(props)
+
+const router = useRouter()
+function redirect(e: Event) {
+  if (e.target === e.currentTarget) {
+    router.push(`/post/${data.value.article_id}`)
+  }
+}
 </script>
 
 <template>
-  <div class="entry">
-    <div class="content-wrapper">
+  <div @click="redirect" class="entry">
+    <div @click="redirect" class="content-wrapper">
       <div class="content-main">
         <div class="title-row">
           <NuxtLink :to="`/post/${data.article_id}`" class="title">{{ data.title }}</NuxtLink>
@@ -22,7 +29,7 @@ const { data } = toRefs(props)
             <div>{{ data.abstract }}</div>
           </NuxtLink>
         </div>
-        <div class="entry-footer">
+        <div @click="redirect" class="entry-footer">
           <ul class="action-list jh-timeline-action-area">
             <li class="item meta-container">
               <NuxtLink to="" class="user-message">{{ data.author }}</NuxtLink>
