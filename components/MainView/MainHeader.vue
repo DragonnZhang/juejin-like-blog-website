@@ -45,7 +45,7 @@ onBeforeUnmount(() => {
                   v-for="d in props.data"
                   :key="d.text"
                   class="nav-item link-item"
-                  :class="{ active: d.relate && d.relate.indexOf(d.url) !== -1 }"
+                  :class="{ active: d.relate && d.relate.indexOf($route.path) !== -1 }"
                 >
                   <NuxtLink :to="d.url">{{ d.text }}</NuxtLink>
                 </li>
