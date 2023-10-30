@@ -35,22 +35,6 @@ defineEmits(['update:modelValue'])
   z-index: 100;
   user-select: none;
 
-  :before {
-    content: '';
-    position: absolute;
-    margin-left: -0.5rem;
-    top: -0.6rem;
-    right: 2rem;
-    width: 1rem;
-    height: 1rem;
-    background-color: black;
-    border: 1px solid #ddd;
-    border-right: none;
-    border-bottom: none;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
   .title {
     padding: 24px 20px 16px 20px;
     font-weight: 500;
@@ -82,5 +66,21 @@ defineEmits(['update:modelValue'])
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  margin-left: -0.5rem;
+  top: -0.6rem;
+  right: 2rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: black;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-bottom: none;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 </style>

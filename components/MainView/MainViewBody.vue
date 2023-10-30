@@ -102,7 +102,7 @@ import MainViewRightSideBar from '~/components/MainView/MainViewRightSideBar.vue
     font-weight: 500;
   }
 
-  .nav-item.active:before {
+  .nav-item.active::before {
     display: block;
     content: '';
     position: absolute;

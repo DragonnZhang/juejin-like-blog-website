@@ -177,7 +177,7 @@ onBeforeUnmount(() => {
   height: 5rem;
 }
 
-.phone-hide .nav-item.link-item a:not(.no-hover):hover:not(.no-border):before {
+.phone-hide .nav-item.link-item a:not(.no-hover):hover:not(.no-border)::before {
   content: '';
   position: absolute;
   top: auto;
