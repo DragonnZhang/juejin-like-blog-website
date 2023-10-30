@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   hasBadge: boolean
   type: 'icon-zan' | 'icon-comment' | 'icon-collect' | 'icon-share'
   badgeNumber?: number
@@ -7,9 +7,9 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div :class="{ 'with-badge': props.hasBadge }" class="panel-btn" :badge="props.badgeNumber">
-    <svg class="sprite-icon" :class="[props.type]">
-      <use :xlink:href="`#${props.type}`"></use>
+  <div :class="{ 'with-badge': hasBadge }" class="panel-btn" :badge="badgeNumber">
+    <svg class="sprite-icon" :class="[type]">
+      <use :xlink:href="`#${type}`"></use>
     </svg>
   </div>
 </template>

@@ -34,7 +34,7 @@ type SideBarData = {
   url: string
 }
 
-const props = defineProps<{
+defineProps<{
   data: SideBarData[]
 }>()
 
@@ -46,7 +46,7 @@ function isActive(url: string, path: string) {
 <template>
   <div class="index-nav" :class="{ top: topVanish }">
     <nav class="side-navigator-wrap">
-      <div class="nav-item-wrap" v-for="d in props.data" :key="d.text">
+      <div class="nav-item-wrap" v-for="d in data" :key="d.text">
         <div class="nav-item-content" :class="{ 'active-nav': isActive(d.url, $route.path) }">
           <NuxtLink class="nav-item" :to="d.url" :class="{ 'route-active': isActive(d.url, $route.path) }">
             <component :is="getComponent(d.url.slice(1))"></component>

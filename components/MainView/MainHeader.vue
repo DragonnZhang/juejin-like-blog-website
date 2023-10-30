@@ -9,7 +9,7 @@ type NavDataList = {
   data: NavData[]
   avatarURL: string
 }
-const props = defineProps<NavDataList>()
+defineProps<NavDataList>()
 
 const topVanish = useTopVanish()
 
@@ -42,7 +42,7 @@ onBeforeUnmount(() => {
             <li class="main-nav-list">
               <ul class="phone-hide">
                 <li
-                  v-for="d in props.data"
+                  v-for="d in data"
                   :key="d.text"
                   class="nav-item link-item"
                   :class="{ active: d.relate && d.relate.indexOf($route.path) !== -1 }"
@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
               </li>
               <li class="nav-item menu">
                 <div class="avatar-wrapper">
-                  <img :src="props.avatarURL" alt="头像" class="lazy avatar immediate" loading="lazy" />
+                  <img :src="avatarURL" alt="头像" class="lazy avatar immediate" loading="lazy" />
                 </div>
               </li>
             </ul>
