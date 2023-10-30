@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Panel from '~/components/Public/Panel.vue'
+import FormItem from '~/components/Public/FormItem.vue'
 import { useArticle, useArticleInformation } from '~/composables/states'
 
 const article = useArticle()
@@ -22,6 +24,8 @@ async function publishArticle() {
     }
   })
 }
+
+const displayPanel = ref(false)
 </script>
 
 <template>
@@ -30,7 +34,16 @@ async function publishArticle() {
     <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" v-model="articleInfo.title" />
     <div class="right-box">
       <div class="publish-popup">
-        <button class="publish-button" @click="publishArticle">发布</button>
+        <button class="publish-button" @click="displayPanel = !displayPanel">发布</button>
+        <Panel v-model="displayPanel" title="发布文章">
+          <FormItem label="分类：" :required="true">123</FormItem>
+          <FormItem label="添加标签：" :required="true">123</FormItem>
+          <FormItem label="文章封面：">123</FormItem>
+          <FormItem label="编辑摘要：" :required="true">123</FormItem>
+          <template #footer>
+            <div>12312312</div>
+          </template>
+        </Panel>
       </div>
     </div>
   </header>
@@ -81,6 +94,7 @@ async function publishArticle() {
       min-width: 62px;
       margin-left: 8px;
       margin-right: 8px;
+      position: relative;
     }
 
     .publish-button {
