@@ -26,7 +26,7 @@ defineEmits(['update:modelValue'])
   font-size: 1.2rem;
   white-space: nowrap;
   color: #909090;
-  background-color: black;
+  background-color: var(--juejin-background-color-4);
   border: 1px solid #ddd;
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 2px #f1f1f1;
@@ -36,7 +36,7 @@ defineEmits(['update:modelValue'])
   user-select: none;
 
   .title {
-    padding: 24px 20px 16px 20px;
+    padding: 24px 20px 18px 20px;
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
@@ -76,7 +76,7 @@ defineEmits(['update:modelValue'])
   right: 2rem;
   width: 1rem;
   height: 1rem;
-  background-color: black;
+  background-color: var(--juejin-background-color-4);
   border: 1px solid #ddd;
   border-right: none;
   border-bottom: none;
