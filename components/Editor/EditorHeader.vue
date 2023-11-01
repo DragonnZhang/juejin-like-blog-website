@@ -2,6 +2,7 @@
 import Panel from '~/components/Public/Panel.vue'
 import FormItem from '~/components/Public/FormItem.vue'
 import BlockButton from '~/components/Public/BlockButton.vue'
+import TextArea from '~/components/Public/TextArea.vue'
 import { useArticle, useArticleInformation } from '~/composables/states'
 
 const article = useArticle()
@@ -12,8 +13,8 @@ async function publishArticle() {
     method: 'post',
     body: {
       title: articleInfo.value.title,
-      abstract: 'This is a test article.',
-      author: 'Dragon',
+      abstract: articleInfo.value.abstract,
+      author: articleInfo.value.author,
       publishTime: new Date(),
       content: article.value,
       views: 0,
@@ -24,9 +25,13 @@ async function publishArticle() {
       tags: []
     }
   })
+  closePanel()
 }
 
 const displayPanel = ref(false)
+function closePanel() {
+  displayPanel.value = !displayPanel.value
+}
 </script>
 
 <template>
@@ -35,16 +40,18 @@ const displayPanel = ref(false)
     <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" v-model="articleInfo.title" />
     <div class="right-box">
       <div class="publish-popup">
-        <BlockButton type="primary" size="medium" @click="displayPanel = !displayPanel">发布</BlockButton>
+        <BlockButton type="primary" size="medium" @click="closePanel">发布</BlockButton>
         <Panel v-model="displayPanel" title="发布文章">
           <FormItem label="分类：" :required="true">123</FormItem>
           <FormItem label="添加标签：" :required="true">123</FormItem>
           <FormItem label="文章封面：">123</FormItem>
-          <FormItem label="编辑摘要：" :required="true">123</FormItem>
+          <FormItem label="编辑摘要：" :required="true">
+            <TextArea v-model="articleInfo.abstract" />
+          </FormItem>
           <template #footer>
             <div class="btn-container">
-              <BlockButton type="line" style="margin-right: 16px">取消</BlockButton>
-              <BlockButton type="primary">确定并发布</BlockButton>
+              <BlockButton type="line" style="margin-right: 16px" @click="closePanel">取消</BlockButton>
+              <BlockButton type="primary" @click="publishArticle">确定并发布</BlockButton>
             </div>
           </template>
         </Panel>
