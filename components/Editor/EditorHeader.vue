@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Panel from '~/components/Public/Panel.vue'
 import FormItem from '~/components/Public/FormItem.vue'
+import BlockButton from '~/components/Public/BlockButton.vue'
 import { useArticle, useArticleInformation } from '~/composables/states'
 
 const article = useArticle()
@@ -34,14 +35,17 @@ const displayPanel = ref(false)
     <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" v-model="articleInfo.title" />
     <div class="right-box">
       <div class="publish-popup">
-        <button class="publish-button" @click="displayPanel = !displayPanel">发布</button>
+        <BlockButton type="primary" size="medium" @click="displayPanel = !displayPanel">发布</BlockButton>
         <Panel v-model="displayPanel" title="发布文章">
           <FormItem label="分类：" :required="true">123</FormItem>
           <FormItem label="添加标签：" :required="true">123</FormItem>
           <FormItem label="文章封面：">123</FormItem>
           <FormItem label="编辑摘要：" :required="true">123</FormItem>
           <template #footer>
-            <div>12312312</div>
+            <div class="btn-container">
+              <BlockButton type="line" style="margin-right: 16px">取消</BlockButton>
+              <BlockButton type="primary">确定并发布</BlockButton>
+            </div>
           </template>
         </Panel>
       </div>
@@ -96,20 +100,11 @@ const displayPanel = ref(false)
       margin-right: 8px;
       position: relative;
     }
-
-    .publish-button {
-      height: 32px;
-      padding: 2px 16px;
-      font-size: 14px;
-      line-height: 22px;
-      border: 1px solid #1d7dfa;
-      border-radius: 2px;
-      cursor: pointer;
-      color: #fff;
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      background-color: #1d7dfa;
-    }
   }
+}
+
+.btn-container {
+  flex: auto;
+  text-align: right;
 }
 </style>
