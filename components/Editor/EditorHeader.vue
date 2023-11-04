@@ -39,7 +39,7 @@ function closePanel() {
 const clickHandler = (event: Event) => {
   const ele = document.getElementById('publish-panel')
   const button = document.getElementById('publish-button')
-  if (!ele?.contains(event.target as Node) && !button?.contains(event.target as Node)) {
+  if (!ele?.contains(event.target as Node) && !button?.contains(event.target as Node) && document.contains(event.target as Node)) {
     displayPanel.value = false
   }
 }
@@ -48,6 +48,11 @@ onMounted(() => {
 })
 onUnmounted(() => {
   document.removeEventListener('click', clickHandler)
+})
+
+const url = ref('')
+watchEffect(() => {
+  console.log(url.value)
 })
 </script>
 
@@ -62,7 +67,7 @@ onUnmounted(() => {
           <FormItem label="分类：" :required="true">123</FormItem>
           <FormItem label="添加标签：" :required="true">123</FormItem>
           <FormItem label="文章封面：">
-            <UploadImage />
+            <UploadImage v-model="url" />
           </FormItem>
           <FormItem label="编辑摘要：" :required="true">
             <TextArea v-model="articleInfo.abstract" />

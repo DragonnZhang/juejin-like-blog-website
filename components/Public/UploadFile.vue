@@ -2,6 +2,7 @@
 const props = defineProps<{
   modelValue: string
   type: 'md' | 'image'
+  id: string
 }>()
 const emit = defineEmits(['update:modelValue'])
 
@@ -63,9 +64,13 @@ async function handleFileChange(e: Event) {
   } catch (err) {
     console.log('文件读取出错:', err)
   }
+
+  ;(e.target as HTMLInputElement).value = ''
 }
 </script>
 
 <template>
-  <input type="file" :oninput="handleFileChange" :accept="accept" v-show="false" />
+  <ClientOnly>
+    <input :id="id" type="file" :onchange="handleFileChange" :accept="accept" v-show="false" />
+  </ClientOnly>
 </template>

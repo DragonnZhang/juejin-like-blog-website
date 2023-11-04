@@ -20,9 +20,7 @@ function handleChange(v: string) {
 <template>
   <div class="main">
     <Editor :plugins="plugins" :value="article" @change="handleChange" :locale="zhHans" />
-    <ClientOnly>
-      <UploadFile id="upload-markdown" v-model="article" type="md" />
-    </ClientOnly>
+    <UploadFile id="upload-markdown" v-model="article" type="md" />
   </div>
 </template>
 
