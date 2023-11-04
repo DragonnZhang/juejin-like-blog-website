@@ -3,6 +3,7 @@ import Panel from '~/components/Public/Panel.vue'
 import FormItem from '~/components/Public/FormItem.vue'
 import BlockButton from '~/components/Public/BlockButton.vue'
 import TextArea from '~/components/Public/TextArea.vue'
+import UploadImage from '~/components/Public/UploadImage.vue'
 import { useArticle, useArticleInformation } from '~/composables/states'
 
 const article = useArticle()
@@ -60,7 +61,9 @@ onUnmounted(() => {
         <Panel id="publish-panel" v-model="displayPanel" title="发布文章">
           <FormItem label="分类：" :required="true">123</FormItem>
           <FormItem label="添加标签：" :required="true">123</FormItem>
-          <FormItem label="文章封面：">123</FormItem>
+          <FormItem label="文章封面：">
+            <UploadImage />
+          </FormItem>
           <FormItem label="编辑摘要：" :required="true">
             <TextArea v-model="articleInfo.abstract" />
           </FormItem>
