@@ -49,11 +49,6 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener('click', clickHandler)
 })
-
-const url = ref('')
-watchEffect(() => {
-  console.log(url.value)
-})
 </script>
 
 <template>
@@ -67,7 +62,7 @@ watchEffect(() => {
           <FormItem label="分类：" :required="true">123</FormItem>
           <FormItem label="添加标签：" :required="true">123</FormItem>
           <FormItem label="文章封面：">
-            <UploadImage v-model="url" />
+            <UploadImage v-model="articleInfo.cover" />
           </FormItem>
           <FormItem label="编辑摘要：" :required="true">
             <TextArea v-model="articleInfo.abstract" />
