@@ -31,7 +31,7 @@ defineEmits(['update:modelValue'])
 }
 
 textarea {
-  border: 1px solid #515151;
+  border: 1px solid var(--jujin-border-color-1);
   border-radius: 2px;
   position: relative;
   width: 100%;
