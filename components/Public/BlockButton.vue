@@ -12,6 +12,22 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #007fff;
+  color: #fff;
+  border-radius: 2px;
+  border: none;
+  padding: 0.5rem 1.3rem;
+  outline: none;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  cursor: pointer;
+}
+
 .line {
   background-color: #fff;
   border: 1px solid #2986ff;

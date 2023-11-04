@@ -57,7 +57,7 @@ onBeforeUnmount(() => {
                   <li class="nav-item search"></li>
                   <li class="nav-item add creator-item">
                     <div class="add-group">
-                      <button class="add-btn" @click="$router.push('/editor')">写文章</button>
+                      <button class="add-btn button" @click="$router.push('/editor')">写文章</button>
                       <div class="more">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="unfold12-icon">
                           <path
