@@ -32,6 +32,22 @@ const displayPanel = ref(false)
 function closePanel() {
   displayPanel.value = !displayPanel.value
 }
+
+// When user clicks outside the panel, the panel should vanish.
+// But when user clicks at the publish button, the panel should appear.
+const clickHandler = (event: Event) => {
+  const ele = document.getElementById('publish-panel')
+  const button = document.getElementById('publish-button')
+  if (!ele?.contains(event.target as Node) && !button?.contains(event.target as Node)) {
+    displayPanel.value = false
+  }
+}
+onMounted(() => {
+  document.addEventListener('click', clickHandler)
+})
+onUnmounted(() => {
+  document.removeEventListener('click', clickHandler)
+})
 </script>
 
 <template>
@@ -40,8 +56,8 @@ function closePanel() {
     <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" v-model="articleInfo.title" />
     <div class="right-box">
       <div class="publish-popup">
-        <BlockButton type="primary" size="medium" @click="closePanel">发布</BlockButton>
-        <Panel v-model="displayPanel" title="发布文章">
+        <BlockButton id="publish-button" type="primary" size="medium" @click="closePanel">发布</BlockButton>
+        <Panel id="publish-panel" v-model="displayPanel" title="发布文章">
           <FormItem label="分类：" :required="true">123</FormItem>
           <FormItem label="添加标签：" :required="true">123</FormItem>
           <FormItem label="文章封面：">123</FormItem>
