@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import UploadArticle from '~/components/Editor/UploadArticle.vue'
+import UploadFile from '~/components/Public/UploadFile.vue'
 import { useArticle } from '~/composables/states'
 import { Editor } from '@bytemd/vue-next'
 import 'bytemd/dist/index.css'
@@ -20,7 +20,9 @@ function handleChange(v: string) {
 <template>
   <div class="main">
     <Editor :plugins="plugins" :value="article" @change="handleChange" :locale="zhHans" />
-    <UploadArticle />
+    <ClientOnly>
+      <UploadFile id="upload-markdown" v-model="article" type="md" />
+    </ClientOnly>
   </div>
 </template>
 
