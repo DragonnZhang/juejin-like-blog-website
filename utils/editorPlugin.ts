@@ -97,7 +97,7 @@ export function importPlugin(): BytemdPlugin {
         handler: {
           type: 'action',
           click({ editor }) {
-            ;(document.querySelector('#upload') as HTMLInputElement).click()
+            ;(document.querySelector('#upload-markdown') as HTMLInputElement).click()
             editor.focus()
           }
         }
