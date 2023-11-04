@@ -4,7 +4,8 @@ export const useArticleInformation = () =>
     ref({
       title: '',
       author: '',
-      abstract: ''
+      abstract: '',
+      cover: ''
     })
   )
 export const useTopVanish = () => useState('topVanish', () => false)
