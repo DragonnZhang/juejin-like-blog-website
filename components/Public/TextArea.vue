@@ -38,7 +38,7 @@ textarea {
   display: inline-block;
   color: white;
   line-height: 1.5;
-  background-color: var(--juejin-background-color-4);
+  background-color: var(--juejin-panel-background-color);
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   outline: 0;
@@ -53,5 +53,15 @@ textarea {
     all 0.3s,
     height 0s;
   resize: none;
+}
+
+textarea:hover {
+  background: #1f1f1f;
+  border-color: #3370ff;
+}
+
+textarea:focus {
+  background-color: var(--juejin-background-color-4);
+  border-color: #3370ff;
 }
 </style>

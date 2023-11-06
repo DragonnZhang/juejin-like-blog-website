@@ -39,6 +39,10 @@ defineProps<{
   }
 }
 
+.panel-btn:hover .sprite-icon {
+  color: var(--juejin-font-2);
+}
+
 .panel-btn.with-badge:after {
   content: attr(badge);
   position: absolute;
