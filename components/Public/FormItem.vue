@@ -8,7 +8,9 @@ defineProps<{
 <template>
   <div class="form-item">
     <div class="label" :class="{ required }">{{ label }}</div>
-    <slot></slot>
+    <div class="form-item-content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -33,8 +35,9 @@ defineProps<{
     vertical-align: -2px;
   }
 
-  :deep(.form-item-content) {
+  .form-item-content {
     flex: auto;
+    white-space: normal;
   }
 }
 </style>
