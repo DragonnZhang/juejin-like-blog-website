@@ -9,7 +9,6 @@ const emit = defineEmits(['update:modelValue'])
 // bind modelValue to url so that when url changes modelValue will also change.
 const url = ref(props.modelValue)
 watch(url, () => {
-  console.log('changed')
   emit('update:modelValue', url.value)
 })
 
@@ -22,14 +21,12 @@ function handleDelete() {
 </script>
 
 <template>
-  <div v-if="!url">
-    <button class="select-btn" @click="handleClick">
-      <div class="button-slot">
-        <img src="~/assets/svg/add.svg" height="20" alt="add_cover" />
-        <div class="upload">上传封面</div>
-      </div>
-    </button>
-  </div>
+  <button v-if="!url" class="select-btn" @click="handleClick">
+    <div class="button-slot">
+      <img src="~/assets/svg/add.svg" height="20" alt="add_cover" />
+      <div class="upload">上传封面</div>
+    </div>
+  </button>
   <div v-else class="preview-box">
     <img :src="url" class="preview-image" />
     <button class="delete-button" @click="handleDelete">

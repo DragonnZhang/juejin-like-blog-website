@@ -23,7 +23,6 @@ const highlightOption = [
 export function highlightPlugin(): BytemdPlugin {
   return {
     viewerEffect({ file }) {
-      console.log('view!!')
       if (!file.frontmatter) return
 
       const { highlight } = file.frontmatter as { highlight: string }
