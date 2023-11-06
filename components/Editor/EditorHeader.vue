@@ -23,8 +23,9 @@ async function publishArticle() {
       likes: 0,
       collections: 0,
       comments: 0,
-      imgUrl: '1',
-      tags: []
+      imgUrl: articleInfo.value.cover,
+      tags: [],
+      type: articleInfo.value.type
     }
   })
   closePanel()
