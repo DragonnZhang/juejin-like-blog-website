@@ -35,9 +35,9 @@ defineEmits(['update:modelValue'])
   border-radius: 2px;
   cursor: pointer;
   color: #86909c;
-  background-color: #2f2f2f;
+  background-color: var(--juejin-panel-background-color);
   box-sizing: border-box;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .item:hover {

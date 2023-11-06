@@ -31,12 +31,16 @@ button {
 .line {
   background-color: #fff;
   border: 1px solid #2986ff;
-  border-color: #1e80ff;
+  border-color: #fff;
   color: #1e80ff;
 }
 
 .primary {
   background-color: #1e80ff;
+}
+
+.primary:hover {
+  background-color: var(--juejin-brand-2-hover);
 }
 
 .medium {
