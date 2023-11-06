@@ -56,7 +56,7 @@ textarea {
 }
 
 textarea:hover {
-  background: #1f1f1f;
+  background: var(--juejin-panel-hover-color);
   border-color: #3370ff;
 }
 

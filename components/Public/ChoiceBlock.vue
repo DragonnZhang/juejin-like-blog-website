@@ -41,7 +41,7 @@ defineEmits(['update:modelValue'])
 }
 
 .item:hover {
-  background-color: black;
+  background-color: var(--juejin-panel-hover-color);
 }
 
 .item.active {
