@@ -13,16 +13,32 @@ function handleClose(tag: string) {
   emit('update:modelValue', newArray)
 }
 
+// hover
+const hover = ref(false)
+
+// input
+let input = '' as unknown as HTMLInputElement
 function inputFocus() {
-  ;(document.querySelector('.select__input') as HTMLInputElement).focus()
+  input.focus()
 }
+onNuxtReady(() => {
+  input = document.querySelector('.select__input') as HTMLInputElement
+
+  input.addEventListener('focus', () => {
+    hover.value = true
+  })
+
+  input.addEventListener('blur', () => {
+    hover.value = false
+  })
+})
 </script>
 
 <template>
-  <div class="select">
+  <div class="select" :class="{ 'select--hover': hover }">
     <div class="select__wrap" @click="inputFocus">
       <div class="select__content-wrap">
-        <div class="select__placeholder" v-if="modelValue.length === 0">请搜索添加标签</div>
+        <div class="select__placeholder" v-if="!modelValue.length">请搜索添加标签</div>
         <Tag v-else v-for="tag in modelValue" :key="tag" @close="handleClose(tag)">{{ tag }}</Tag>
         <input class="select__input" style="width: 30px" />
       </div>
@@ -75,7 +91,8 @@ function inputFocus() {
   }
 }
 
-.select:hover {
+.select:hover,
+.select--hover {
   border: 1px solid var(--juejin-panel-hover-border-color);
 }
 
