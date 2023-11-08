@@ -5,6 +5,7 @@ import BlockButton from '~/components/Public/BlockButton.vue'
 import TextArea from '~/components/Public/TextArea.vue'
 import UploadImage from '~/components/Public/UploadImage.vue'
 import ChoiceBlock from '~/components/Public/ChoiceBlock.vue'
+import Select from '~/components/Public/Select.vue'
 import { useArticle, useArticleInformation } from '~/composables/states'
 
 const article = useArticle()
@@ -39,6 +40,10 @@ function closePanel() {
 // ChoiceBlock
 const choices = ['后端', '前端', 'Android', 'iOS', '人工智能', '开发工具', '代码人生', '阅读']
 
+// Select
+const selection = ['面试', '前端', '后端']
+const res = ref(['123'])
+
 // When user clicks outside the panel, the panel should vanish.
 // But when user clicks at the publish button, the panel should appear.
 const clickHandler = (event: Event) => {
@@ -67,7 +72,9 @@ onUnmounted(() => {
           <FormItem label="分类：" :required="true">
             <ChoiceBlock v-model="articleInfo.type" :choices="choices" />
           </FormItem>
-          <FormItem label="添加标签：" :required="true">123</FormItem>
+          <FormItem label="添加标签：" :required="true">
+            <Select :selection="selection" v-model="res" :max-length="3"></Select>
+          </FormItem>
           <FormItem label="文章封面：">
             <UploadImage v-model="articleInfo.cover" />
           </FormItem>
