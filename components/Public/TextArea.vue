@@ -57,11 +57,11 @@ textarea {
 
 textarea:hover {
   background: var(--juejin-panel-hover-color);
-  border-color: #3370ff;
+  border-color: var(--juejin-panel-hover-border-color);
 }
 
 textarea:focus {
   background-color: var(--juejin-background-color-4);
-  border-color: #3370ff;
+  border-color: var(--juejin-panel-hover-border-color);
 }
 </style>

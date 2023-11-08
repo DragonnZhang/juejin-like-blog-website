@@ -34,7 +34,7 @@ defineEmits(['update:modelValue'])
   text-overflow: ellipsis;
   border-radius: 2px;
   cursor: pointer;
-  color: #86909c;
+  color: #c2c6cc;
   background-color: var(--juejin-panel-background-color);
   box-sizing: border-box;
   transition: all 0.3s ease;
