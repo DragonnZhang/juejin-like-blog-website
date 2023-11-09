@@ -1,7 +1,7 @@
 import { DirectiveBinding } from 'nuxt/dist/app/compat/capi'
 
 const handleClick = (e: Event, el: HTMLElement, binding: DirectiveBinding) => {
-  if (el.contains(e.target as Node)) {
+  if (!el.contains(e.target as Node)) {
     binding.value(e)
   }
 }
