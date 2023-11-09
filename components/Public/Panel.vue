@@ -1,13 +1,19 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   modelValue: boolean
   title: string
+  relateEl: HTMLElement
 }>()
-defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue'])
+
+function handleClose(e: Event) {
+  if (props.relateEl.contains(e.target as Node)) return
+  emits('update:modelValue', false)
+}
 </script>
 
 <template>
-  <div class="panel" v-show="modelValue">
+  <div v-clickoutside="handleClose" class="panel" v-show="modelValue">
     <div class="title">{{ title }}</div>
     <slot></slot>
     <div class="footer">

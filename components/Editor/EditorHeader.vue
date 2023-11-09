@@ -44,20 +44,11 @@ const choices = ['后端', '前端', 'Android', 'iOS', '人工智能', '开发�
 const selection = ['面试', '前端', '后端']
 const res = ref(['123'])
 
-// When user clicks outside the panel, the panel should vanish.
-// But when user clicks at the publish button, the panel should appear.
-const clickHandler = (event: Event) => {
-  const ele = document.getElementById('publish-panel')
-  const button = document.getElementById('publish-button')
-  if (!ele?.contains(event.target as Node) && !button?.contains(event.target as Node) && document.contains(event.target as Node)) {
-    displayPanel.value = false
-  }
-}
+// Publish
+const publish = ref()
+
 onMounted(() => {
-  document.addEventListener('click', clickHandler)
-})
-onUnmounted(() => {
-  document.removeEventListener('click', clickHandler)
+  publish.value = document.getElementById('publish-button')
 })
 </script>
 
@@ -68,7 +59,7 @@ onUnmounted(() => {
     <div class="right-box">
       <div class="publish-popup">
         <BlockButton id="publish-button" type="primary" size="medium" @click="closePanel">发布</BlockButton>
-        <Panel id="publish-panel" v-model="displayPanel" title="发布文章">
+        <Panel :relate-el="publish" v-model="displayPanel" title="发布文章">
           <FormItem label="分类：" :required="true">
             <ChoiceBlock v-model="articleInfo.type" :choices="choices" />
           </FormItem>
