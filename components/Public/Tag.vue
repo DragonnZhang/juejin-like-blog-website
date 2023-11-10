@@ -7,7 +7,7 @@ defineEmits(['close'])
     <span>
       <slot></slot>
     </span>
-    <i class="icon" @click="$emit('close')">
+    <i class="icon" @click.stop="$emit('close')">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
         <path fill="none" d="M0 0h48v48H0z"></path>
         <path
