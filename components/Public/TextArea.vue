@@ -19,7 +19,6 @@ defineEmits(['update:modelValue'])
 
 <style scoped lang="scss">
 .input {
-  position: relative;
   width: 100%;
   display: inline-block;
   font-size: 14px;
@@ -33,7 +32,6 @@ defineEmits(['update:modelValue'])
 textarea {
   border: 1px solid var(--jujin-border-color-1);
   border-radius: 2px;
-  position: relative;
   width: 100%;
   display: inline-block;
   color: white;
