@@ -9,13 +9,18 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['update:modelValue'])
 
+// bind modelValue to selected to pass to child component
+const selected = ref(props.modelValue)
+watch(selected, () => {
+  emit('update:modelValue', selected.value)
+})
+
 function handleClose(tag: string) {
-  const newArray = props.modelValue.filter((value) => value !== tag)
-  emit('update:modelValue', newArray)
+  selected.value = props.modelValue.filter((value) => value !== tag)
 }
 
 // arrow
-const down = ref(true)
+const down = ref(false)
 
 // input
 const input = ref()
@@ -36,7 +41,7 @@ function handleBlur(event: FocusEvent) {
     inputFocus()
     return
   }
-  down.value = true
+  down.value = false
 }
 </script>
 
@@ -44,12 +49,12 @@ function handleBlur(event: FocusEvent) {
   <div class="select" ref="wrapperRef" :class="{ 'select--hover': focus }">
     <div class="select__wrap" @click="inputFocus">
       <div class="select__content-wrap" tabindex="-1">
-        <div class="select__placeholder" v-if="!modelValue.length">请搜索添加标签</div>
-        <Tag v-else v-for="tag in modelValue" :key="tag" @close="handleClose(tag)">{{ tag }}</Tag>
+        <div v-if="!selected.length" class="select__placeholder">请搜索添加标签</div>
+        <Tag v-else v-for="tag in selected" :key="tag" @close="handleClose(tag)">{{ tag }}</Tag>
         <input class="select__input" ref="input" @focus="handleFocus" @blur="handleBlur" />
       </div>
       <div class="select__icon-wrap">
-        <span class="select__suffix" :class="{ down: down }">
+        <span class="select__suffix" :class="{ down: !down }">
           <i class="icon">
             <svg
               t="1561636079192"
@@ -70,7 +75,7 @@ function handleBlur(event: FocusEvent) {
       </div>
     </div>
   </div>
-  <SelectOption />
+  <SelectOption :show="down" :option="selection" v-model="selected" :maxLength="maxLength" />
 </template>
 
 <style scoped lang="scss">
