@@ -84,7 +84,7 @@ function handleBlur(event: FocusEvent) {
   display: inline-block;
   vertical-align: middle;
   font-size: 14px;
-  background: #121212;
+  background: var(--juejin-background-color-5);
   border-radius: 2px;
   border: 1px solid var(--jujin-border-color-1);
   -webkit-transition: all 0.3s;
@@ -130,7 +130,7 @@ function handleBlur(event: FocusEvent) {
   height: 30px;
   color: #c2c6cc;
   cursor: pointer;
-  background-color: var(--juejin-panel-background-color);
+  background-color: var(--juejin-background-color-5);
   width: 30px;
 }
 
