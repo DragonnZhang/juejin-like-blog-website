@@ -81,6 +81,7 @@ function handleDelete() {
   position: relative;
   width: 160px;
   overflow: hidden;
+  z-index: 100;
 
   .preview-image {
     width: 100%;
