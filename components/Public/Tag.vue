@@ -41,7 +41,7 @@ defineEmits(['close'])
 
 .tag {
   margin-right: 6px;
-  background-color: #f0f1f2;
+  background-color: #1f262e;
   overflow: hidden;
   margin-top: 4px;
   position: relative;
@@ -55,7 +55,7 @@ defineEmits(['close'])
   padding: 0 6px;
   border-width: 1px;
   border-radius: 2px;
-  border-color: #e6e8eb;
+  border: 1px solid #49494a;
   color: #282f38;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;

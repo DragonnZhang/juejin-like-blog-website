@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   type: 'line' | 'primary'
-  size?: 'medium'
+  size?: 'medium' | 'thin'
 }>()
 </script>
 
@@ -24,15 +24,27 @@ button {
   outline: none;
   transition:
     background-color 0.3s,
-    color 0.3s;
+    color 0.3s,
+    border 0.3s;
   cursor: pointer;
 }
 
 .line {
-  background-color: #fff;
+  background-color: #121212;
+
   border: 1px solid #2986ff;
-  border-color: #fff;
   color: #1e80ff;
+}
+
+.line:hover {
+  border: 1px solid #2e58a5;
+  color: #4783f7;
+}
+
+.thin {
+  width: 90px;
+  padding: 4px 0;
+  border-radius: 4px;
 }
 
 .primary {

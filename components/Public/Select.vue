@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Tag from '~/components/Public/Tag.vue'
+import SelectOption from '~/components/Public/SelectOption.vue'
 
 const props = defineProps<{
   modelValue: string[]
@@ -69,6 +70,7 @@ function handleBlur(event: FocusEvent) {
       </div>
     </div>
   </div>
+  <SelectOption />
 </template>
 
 <style scoped lang="scss">
@@ -82,7 +84,7 @@ function handleBlur(event: FocusEvent) {
   display: inline-block;
   vertical-align: middle;
   font-size: 14px;
-  background: var(--juejin-panel-background-color);
+  background: #121212;
   border-radius: 2px;
   border: 1px solid var(--jujin-border-color-1);
   -webkit-transition: all 0.3s;

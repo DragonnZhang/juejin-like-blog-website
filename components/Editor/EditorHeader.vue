@@ -74,8 +74,8 @@ onMounted(() => {
           </FormItem>
           <template #footer>
             <div class="btn-container">
-              <BlockButton type="line" style="margin-right: 16px" @click="closePanel">取消</BlockButton>
-              <BlockButton type="primary" @click="publishArticle">确定并发布</BlockButton>
+              <BlockButton type="line" size="thin" style="margin-right: 16px" @click="closePanel">取消</BlockButton>
+              <BlockButton type="primary" size="thin" @click="publishArticle">确定并发布</BlockButton>
             </div>
           </template>
         </Panel>
@@ -91,7 +91,7 @@ onMounted(() => {
   padding: 0 27px;
   height: 5.334rem;
   background-color: var(--juejin-background-color);
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #3d3e40;
 
   .left-box {
     padding-right: 14px;

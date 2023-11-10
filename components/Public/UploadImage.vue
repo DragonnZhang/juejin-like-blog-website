@@ -58,7 +58,7 @@ function handleDelete() {
 .select-btn {
   width: 192px;
   height: 128px;
-  background-color: var(--juejin-background-color-4);
+  background-color: var(--juejin-panel-hover-color);
   border: 1px dashed var(--jujin-border-color-1);
   cursor: pointer;
 
@@ -71,7 +71,7 @@ function handleDelete() {
       font-weight: 400;
       font-size: 14px;
       line-height: 22px;
-      color: #565d65;
+      color: #727a85;
       margin-top: 10px;
     }
   }

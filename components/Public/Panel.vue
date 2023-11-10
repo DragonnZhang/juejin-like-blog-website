@@ -7,7 +7,9 @@ const props = defineProps<{
 const emits = defineEmits(['update:modelValue'])
 
 function handleClose(e: Event) {
-  if (props.relateEl.contains(e.target as Node)) return
+  // when I click delete button or sth else,
+  // e.target will no longer exists in dom, so added document contains judge
+  if (props.relateEl.contains(e.target as Node) || !document.contains(e.target as Node)) return
   emits('update:modelValue', false)
 }
 </script>
@@ -33,10 +35,8 @@ function handleClose(e: Event) {
   white-space: nowrap;
   color: #909090;
   background-color: var(--juejin-background-color-4);
-  border: 1px solid #ddd;
+  border: 1px solid var(--juejin-border-dark);
   border-radius: 2px;
-  -webkit-box-shadow: 0 1px 2px #f1f1f1;
-  box-shadow: 0 1px 2px #f1f1f1;
   cursor: default;
   z-index: 100;
   user-select: none;
@@ -47,7 +47,7 @@ function handleClose(e: Event) {
     font-size: 18px;
     line-height: 24px;
     color: white;
-    border-bottom: 1px solid #e5e6eb;
+    border-bottom: 1px solid var(--juejin-border-dark);
   }
 
   :deep(.form-item) {
@@ -61,7 +61,7 @@ function handleClose(e: Event) {
 }
 
 .footer {
-  border-top: 1px solid #e5e6eb;
+  border-top: 1px solid var(--juejin-border-dark);
   height: 72px;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -83,7 +83,7 @@ function handleClose(e: Event) {
   width: 1rem;
   height: 1rem;
   background-color: var(--juejin-background-color-4);
-  border: 1px solid #ddd;
+  border: 1px solid var(--juejin-border-dark);
   border-right: none;
   border-bottom: none;
   -webkit-transform: rotate(45deg);

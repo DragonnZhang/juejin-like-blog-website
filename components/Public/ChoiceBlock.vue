@@ -34,18 +34,18 @@ defineEmits(['update:modelValue'])
   text-overflow: ellipsis;
   border-radius: 2px;
   cursor: pointer;
-  color: #c2c6cc;
+  color: #727a85;
   background-color: var(--juejin-panel-background-color);
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
 
 .item:hover {
-  background-color: var(--juejin-panel-hover-color);
+  background-color: #2d2d31;
 }
 
 .item.active {
   color: #1d7dfa;
-  background-color: #e8f3ff;
+  background-color: #1f262e;
 }
 </style>

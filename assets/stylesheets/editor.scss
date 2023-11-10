@@ -21,8 +21,17 @@
     color: inherit;
   }
 
+  .bytemd-preview {
+    border-left: 1px solid var(--juejin-border-dark);
+  }
+
+  .bytemd-status {
+    border-top: 1px solid var(--juejin-border-dark);
+  }
+
   .bytemd-toolbar {
-    background-color: var(--juejin-background-color-3);
+    background-color: #1e1e1f;
+    border-bottom: 1px solid var(--juejin-border-dark);
 
     .bytemd-toolbar-icon:hover {
       background-color: var(--juejin-editor-selection-color);
