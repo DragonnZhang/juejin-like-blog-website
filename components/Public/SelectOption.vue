@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useSelect } from '~/composables/states'
+
+const selectOption = useSelect()
+
 const props = defineProps<{
   modelValue: string[]
   option: string[]
@@ -8,6 +12,15 @@ const props = defineProps<{
 const emit = defineEmits(['update:modelValue'])
 
 function selectItem(item: string) {
+  if (props.modelValue.indexOf(item) !== -1) {
+    // remove this element
+    emit(
+      'update:modelValue',
+      props.modelValue.filter((v) => v !== item)
+    )
+    return
+  }
+  // add element
   if (props.modelValue.length >= props.maxLength || props.modelValue.indexOf(item) !== -1) return
   emit('update:modelValue', [...props.modelValue, item])
 }
@@ -15,10 +28,18 @@ function selectItem(item: string) {
 
 <template>
   <Transition>
-    <div class="popper" v-show="show">
+    <div class="popper" v-show="show" ref="selectOption" tabindex="-1">
       <div class="select-dropdown">
         <ul class="select-dropdown__list">
-          <li v-for="k in option" :key="k" @click="selectItem(k)" class="select-dropdown__item">{{ k }}</li>
+          <li
+            v-for="k in option"
+            :key="k"
+            @click="selectItem(k)"
+            class="select-dropdown__item"
+            :class="{ active: modelValue.indexOf(k) !== -1 }"
+          >
+            {{ k }}
+          </li>
         </ul>
       </div>
     </div>
@@ -54,17 +75,26 @@ function selectItem(item: string) {
 
     .select-dropdown__list {
       .select-dropdown__item {
-        font-size: 14px;
+        font-size: 12px;
         padding: 0 32px 0 20px;
         position: relative;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         color: #cfd3dc;
-        height: 34px;
+        height: 36px;
         line-height: 34px;
         box-sizing: border-box;
         cursor: pointer;
+      }
+
+      .select-dropdown__item:hover {
+        background-color: #1f262e;
+        color: var(--juejin-panel-brand);
+      }
+
+      .select-dropdown__item.active {
+        color: var(--juejin-panel-brand);
       }
     }
   }

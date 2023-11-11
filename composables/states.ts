@@ -10,3 +10,4 @@ export const useArticleInformation = () =>
     })
   )
 export const useTopVanish = () => useState('topVanish', () => false)
+export const useSelect = () => useState('selectOption', () => null)

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import Tag from '~/components/Public/Tag.vue'
 import SelectOption from '~/components/Public/SelectOption.vue'
+import { useSelect } from '~/composables/states'
+
+const selectOption = useSelect()
 
 const props = defineProps<{
   modelValue: string[]
@@ -39,6 +42,11 @@ function handleBlur(event: FocusEvent) {
   // focus change appears inside the wrapper
   if (event.relatedTarget && wrapperRef.value?.contains(event.relatedTarget as Node)) {
     inputFocus()
+    return
+  }
+  if (selectOption.value && (selectOption.value as HTMLElement).contains(event.relatedTarget as Node)) {
+    focus.value = true
+    input.value.focus()
     return
   }
   down.value = false
@@ -126,6 +134,10 @@ function handleBlur(event: FocusEvent) {
 .select:hover,
 .select--hover {
   border: 1px solid var(--juejin-panel-hover-border-color);
+}
+
+.select--hover {
+  box-shadow: 0 0 0 2px #222f3f;
 }
 
 .select__input {
