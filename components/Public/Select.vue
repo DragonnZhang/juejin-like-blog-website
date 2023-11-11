@@ -32,7 +32,7 @@ const focus = ref(false)
 function inputFocus() {
   if (focus.value) return
   input.value.focus()
-  down.value = !down.value
+  down.value = true
 }
 function handleFocus() {
   focus.value = true
@@ -40,13 +40,11 @@ function handleFocus() {
 function handleBlur(event: FocusEvent) {
   focus.value = false
   // focus change appears inside the wrapper
-  if (event.relatedTarget && wrapperRef.value?.contains(event.relatedTarget as Node)) {
+  if (
+    (event.relatedTarget && wrapperRef.value?.contains(event.relatedTarget as Node)) ||
+    (selectOption.value && (selectOption.value as HTMLElement).contains(event.relatedTarget as Node))
+  ) {
     inputFocus()
-    return
-  }
-  if (selectOption.value && (selectOption.value as HTMLElement).contains(event.relatedTarget as Node)) {
-    focus.value = true
-    input.value.focus()
     return
   }
   down.value = false
