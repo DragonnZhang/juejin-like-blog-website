@@ -21,7 +21,7 @@ defineEmits(['close'])
 <style scoped lang="scss">
 .tag {
   .icon {
-    color: #1d7dfa;
+    color: var(--juejin-panel-brand);
     width: 1em;
     height: 1em;
     display: inline-block;
@@ -69,7 +69,7 @@ span.tag {
 }
 
 .tag > span {
-  color: #1d7dfa;
+  color: var(--juejin-panel-brand);
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;

@@ -45,7 +45,7 @@ defineEmits(['update:modelValue'])
 }
 
 .item.active {
-  color: #1d7dfa;
+  color: var(--juejin-panel-brand);
   background-color: #1f262e;
 }
 </style>
