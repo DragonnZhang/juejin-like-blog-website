@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MainViewBodyCardOrLoading from '~/components/MainView/MainViewBodyCardOrLoading.vue'
+import MainViewBodyCardList from '~/components/MainView/MainViewBodyCardList.vue'
 import MainViewBodyLoadingSkeleton from '~/components/MainView/MainViewBodyLoadingSkeleton.vue'
 import MainViewRightSideBar from '~/components/MainView/MainViewRightSideBar.vue'
 </script>
@@ -24,7 +24,7 @@ import MainViewRightSideBar from '~/components/MainView/MainViewRightSideBar.vue
           <div class="entry-list-wrap">
             <ClientOnly>
               <Suspense>
-                <MainViewBodyCardOrLoading />
+                <MainViewBodyCardList />
                 <template #fallback><MainViewBodyLoadingSkeleton /></template>
               </Suspense>
             </ClientOnly>
