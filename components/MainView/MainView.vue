@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MainViewLeftSideBar from '~/components/MainView/MainViewLeftSideBar.vue'
 import MainViewBody from '~/components/MainView/MainViewBody.vue'
-import MainHeader from '~/components/MainView/MainHeader.vue'
+import MainViewHeader from '~/components/MainView/MainViewHeader.vue'
 
 const leftBarData = ref([
   {
@@ -89,7 +89,7 @@ const url = ref('https://p3-passport.byteimg.com/img/user-avatar/4d142fd37c164eb
 </script>
 
 <template>
-  <MainHeader :data="data" :avatar-u-r-l="url" />
+  <MainViewHeader :data="data" :avatar-u-r-l="url" />
   <main class="container main-container with-view-nav">
     <div class="view timeline-index-view">
       <MainViewLeftSideBar :data="leftBarData" />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MainCard from '~/components/MainView/MainCard.vue'
+import MainViewBodyCard from '~/components/MainView/MainViewBodyCard.vue'
 
 await new Promise((resolve) => {
   setTimeout(resolve, 500)
@@ -12,7 +12,7 @@ const bodyData = ref(articleList)
 <template>
   <div class="entry-list list">
     <li class="item" v-for="data in bodyData" :key="data.article_id">
-      <MainCard :data="data" />
+      <MainViewBodyCard :data="data" />
     </li>
   </div>
 </template>

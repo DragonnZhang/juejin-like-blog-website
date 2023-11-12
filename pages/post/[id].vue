@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MainHeader from '~/components/MainView/MainHeader.vue'
+import MainViewHeader from '~/components/MainView/MainViewHeader.vue'
 import PostMain from '~/components/Post/PostMain.vue'
 
 const route = useRoute()
@@ -58,6 +58,6 @@ const url = ref('https://p3-passport.byteimg.com/img/user-avatar/4d142fd37c164eb
   <Head>
     <Title>{{ articleData.title }}</Title>
   </Head>
-  <MainHeader :data="data" :avatar-u-r-l="url" />
+  <MainViewHeader :data="data" :avatar-u-r-l="url" />
   <PostMain :id="id" :articleData="articleData" />
 </template>
