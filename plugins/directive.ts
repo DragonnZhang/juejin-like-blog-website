@@ -38,12 +38,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     mounted: (el, binding) => {
       if (binding.value) {
         scrollHandler = getScrollHandler(binding)
-        el.addEventListener('scroll', scrollHandler)
+        document.addEventListener('scroll', scrollHandler)
       }
     },
     beforeUnmount: (el, binding) => {
       if (binding.value) {
-        el.removeEventListener('scroll', scrollHandler)
+        document.removeEventListener('scroll', scrollHandler)
       }
     }
   })
