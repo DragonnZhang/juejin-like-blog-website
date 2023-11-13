@@ -23,6 +23,9 @@ dependencies:
   juejin-markdown-themes:
     specifier: ^1.31.0
     version: registry.npmmirror.com/juejin-markdown-themes@1.31.0
+  lodash:
+    specifier: ^4.17.21
+    version: registry.npmmirror.com/lodash@4.17.21
   mongoose:
     specifier: ^7.6.3
     version: registry.npmmirror.com/mongoose@7.6.3

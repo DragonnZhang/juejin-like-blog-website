@@ -27,6 +27,7 @@
     "@bytemd/vue-next": "^1.21.0",
     "bytemd": "^1.21.0",
     "juejin-markdown-themes": "^1.31.0",
+    "lodash": "^4.17.21",
     "mongoose": "^7.6.3"
   }
 }
