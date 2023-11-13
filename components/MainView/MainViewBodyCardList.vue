@@ -1,19 +1,28 @@
 <script setup lang="ts">
 import MainViewBodyCardListItem from '~/components/MainView/MainViewBodyCardListItem.vue'
+import VirtualList from '~/components/Public/VirtualList.vue'
 
 await new Promise((resolve) => {
   setTimeout(resolve, 500)
 })
 
 const { articleList } = await $fetch('/api/articleList')
-const bodyData = ref(articleList)
+const bodyData = ref(articleList.slice(0, 15))
+
+function handleGetMoreData() {
+  setTimeout(() => {
+    bodyData.value = articleList
+  }, 1000)
+}
 </script>
 
 <template>
   <div class="entry-list list">
-    <li class="item" v-for="data in bodyData" :key="data.article_id">
-      <MainViewBodyCardListItem :data="data" />
-    </li>
+    <VirtualList :dataSource="bodyData" :itemHeight="99" @getMoreData="handleGetMoreData">
+      <template #item="{ item }">
+        <MainViewBodyCardListItem :data="item" />
+      </template>
+    </VirtualList>
   </div>
 </template>
 
@@ -22,9 +31,5 @@ const bodyData = ref(articleList)
   width: 100%;
   background-color: var(--juejin-layer-1);
   position: relative;
-
-  .item {
-    transition: all 0.3s ease-in;
-  }
 }
 </style>

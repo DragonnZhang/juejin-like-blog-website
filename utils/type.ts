@@ -14,3 +14,8 @@ export type MainData = {
   imgUrl: string
   alt: string
 }
+
+export type VirtualListProps<T> = {
+  itemHeight: number
+  dataSource: T[]
+}
