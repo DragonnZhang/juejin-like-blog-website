@@ -12,7 +12,7 @@ const state = reactive({
   viewHeight: 1000
 })
 
-const maxCount = computed(() => Math.ceil(state.viewHeight / props.itemHeight) + 1)
+const maxCount = computed(() => Math.ceil(state.viewHeight / props.itemHeight) + 100)
 const endIndex = computed(() => Math.min(props.dataSource.length, state.startIndex + maxCount.value))
 const renderList = computed(() => props.dataSource.slice(state.startIndex, endIndex.value))
 

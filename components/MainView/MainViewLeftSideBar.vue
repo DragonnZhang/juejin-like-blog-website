@@ -72,10 +72,10 @@ function isActive(url: string, path: string) {
   background-color: var(--juejin-layer-1);
   max-height: calc(100vh - 101px);
   overflow-x: hidden;
-}
 
-.index-nav.top {
-  top: 20px;
+  &.top {
+    top: 20px;
+  }
 }
 
 .index-nav::-webkit-scrollbar {
@@ -117,11 +117,11 @@ function isActive(url: string, path: string) {
   position: relative;
   padding: 10px 17px;
   color: var(--juejin-font-2);
-}
 
-.nav-item:hover,
-.nav-item:hover svg {
-  color: var(--juejin-font-brand1-normal);
+  &:hover,
+  &:hover svg {
+    color: var(--juejin-font-brand1-normal);
+  }
 }
 
 .nav-item-content:hover {
@@ -129,19 +129,19 @@ function isActive(url: string, path: string) {
   color: var(--juejin-font-brand1-normal);
 }
 
-.active-nav,
-.active-nav:hover {
-  background-color: var(--juejin-brand-5-light);
-}
-
 .active-nav {
   color: var(--juejin-font-brand1-normal);
   font-weight: 500;
-}
 
-.active-nav .nav-item,
-.active-nav .nav-item svg {
-  color: var(--juejin-font-brand1-normal);
+  &,
+  &:hover {
+    background-color: var(--juejin-brand-5-light);
+  }
+
+  .nav-item,
+  .nav-item svg {
+    color: var(--juejin-font-brand1-normal);
+  }
 }
 
 img {

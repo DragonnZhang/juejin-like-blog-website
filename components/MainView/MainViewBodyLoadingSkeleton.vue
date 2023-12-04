@@ -47,23 +47,23 @@
   animation: skeleton-keyframes 0.6s linear infinite;
 }
 
-.skeleton-line:first-child {
-  width: 40%;
-  margin-top: 8px;
-}
-
 .skeleton-line {
   width: 100%;
   margin-bottom: 16px;
   height: 14px;
-}
 
-.skeleton-line:nth-child(3) {
-  width: 80%;
-}
+  &:first-child {
+    width: 40%;
+    margin-top: 8px;
+  }
 
-.skeleton-line:last-child {
-  width: 60%;
-  margin-bottom: 0;
+  &:nth-child(3) {
+    width: 80%;
+  }
+
+  &:last-child {
+    width: 60%;
+    margin-bottom: 0;
+  }
 }
 </style>

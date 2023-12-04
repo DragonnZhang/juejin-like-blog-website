@@ -86,15 +86,15 @@ function selectItem(item: string) {
         line-height: 34px;
         box-sizing: border-box;
         cursor: pointer;
-      }
 
-      .select-dropdown__item:hover {
-        background-color: #1f262e;
-        color: var(--juejin-panel-brand);
-      }
+        &:hover {
+          background-color: #1f262e;
+          color: var(--juejin-panel-brand);
+        }
 
-      .select-dropdown__item.active {
-        color: var(--juejin-panel-brand);
+        &.active {
+          color: var(--juejin-panel-brand);
+        }
       }
     }
   }

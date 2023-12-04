@@ -44,6 +44,7 @@ import MainViewRightSideBar from '~/components/MainView/MainViewRightSideBar.vue
     position: relative;
   }
 }
+
 .timeline-entry-list {
   border-radius: 2px;
   width: 720px;
@@ -84,34 +85,35 @@ import MainViewRightSideBar from '~/components/MainView/MainViewRightSideBar.vue
   margin-left: -1.66rem;
 }
 
-.nav-item {
-  padding: 0 1.66rem;
-  line-height: 2rem;
-}
-
 .nav-list.left {
   .nav-item {
+    padding: 0 1.66rem;
+    line-height: 2rem;
     font-size: 1.33rem;
     color: var(--juejin-font-2);
     border: none;
     position: relative;
-  }
 
-  .nav-item.active a {
-    color: var(--juejin-font-1);
-    font-weight: 500;
-  }
+    &.active a {
+      color: var(--juejin-font-1);
+      font-weight: 500;
+    }
 
-  .nav-item.active::before {
-    display: block;
-    content: '';
-    position: absolute;
-    bottom: -1rem;
-    left: 40%;
-    width: 22%;
-    height: 3px;
-    background-color: var(--juejin-font-brand1-normal);
-    border-radius: 2px;
+    &.active::before {
+      display: block;
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 40%;
+      width: 22%;
+      height: 3px;
+      background-color: var(--juejin-font-brand1-normal);
+      border-radius: 2px;
+    }
+
+    & a:hover {
+      color: var(--juejin-font-brand1-normal);
+    }
   }
 }
 </style>

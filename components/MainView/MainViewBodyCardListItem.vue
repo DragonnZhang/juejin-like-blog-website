@@ -66,6 +66,10 @@ function redirect(e: Event) {
   flex-direction: column;
   align-items: flex-start;
 
+  &:hover {
+    background: var(--juejin-gray-3);
+  }
+
   .content-wrapper {
     display: flex;
     padding-bottom: 12px;
@@ -182,49 +186,45 @@ function redirect(e: Event) {
   }
 }
 
-.entry:hover {
-  background: var(--juejin-gray-3);
-}
-
 .user-message {
   display: flex;
   align-items: center;
   color: var(--juejin-font-3);
-}
 
-.user-message:hover {
-  color: var(--juejin-font-brand2-hover);
+  &:hover {
+    color: var(--juejin-font-brand2-hover);
+  }
 }
 
 .action-list {
   display: flex;
   align-items: center;
-}
 
-.action-list > .item {
-  position: relative;
-  margin-right: 24px;
-  font-size: 13px;
-  line-height: 20px;
-  color: var(--juejin-font-3);
-  flex-shrink: 0;
+  & > .item {
+    position: relative;
+    margin-right: 24px;
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--juejin-font-3);
+    flex-shrink: 0;
 
-  display: flex;
-  align-items: center;
-}
+    display: flex;
+    align-items: center;
+  }
 
-.action-list > .item span {
-  margin-left: 4px;
-}
+  & > .item span {
+    margin-left: 4px;
+  }
 
-.action-list > .item.like .liked-wrap {
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  & > .item.like .liked-wrap {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.action-list > .item.like:hover {
-  color: var(--juejin-font-brand2-hover);
+  & > .item.like:hover {
+    color: var(--juejin-font-brand2-hover);
+  }
 }
 </style>

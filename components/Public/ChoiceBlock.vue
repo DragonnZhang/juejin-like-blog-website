@@ -38,14 +38,14 @@ defineEmits(['update:modelValue'])
   background-color: var(--juejin-panel-background-color);
   box-sizing: border-box;
   transition: all 0.3s ease;
-}
 
-.item:hover {
-  background-color: #2d2d31;
-}
+  &:hover {
+    background-color: #2d2d31;
+  }
 
-.item.active {
-  color: var(--juejin-panel-brand);
-  background-color: #1f262e;
+  &.active {
+    color: var(--juejin-panel-brand);
+    background-color: #1f262e;
+  }
 }
 </style>

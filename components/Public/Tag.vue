@@ -20,26 +20,6 @@ defineEmits(['close'])
 
 <style scoped lang="scss">
 .tag {
-  .icon {
-    color: var(--juejin-panel-brand);
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 1;
-    font-size: 12px;
-    margin-left: 8px;
-
-    svg {
-      width: 100%;
-      height: 100%;
-      fill: currentColor;
-      pointer-events: none;
-    }
-  }
-}
-
-.tag {
   margin-right: 6px;
   background-color: #1f262e;
   overflow: hidden;
@@ -59,21 +39,36 @@ defineEmits(['close'])
   color: #282f38;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
-}
-
-span.tag {
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
 
-.tag > span {
-  color: var(--juejin-panel-brand);
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  .icon {
+    color: var(--juejin-panel-brand);
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 12px;
+    margin-left: 8px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+      pointer-events: none;
+    }
+  }
+
+  & > span {
+    color: var(--juejin-panel-brand);
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 </style>

@@ -27,12 +27,12 @@ defineProps<{
     -webkit-box-flex: 0;
     -ms-flex: none;
     flex: none;
-  }
 
-  .label.required::before {
-    content: '*';
-    color: #f53f3f;
-    vertical-align: -2px;
+    &.required::before {
+      content: '*';
+      color: #f53f3f;
+      vertical-align: -2px;
+    }
   }
 
   .form-item-content {

@@ -109,10 +109,6 @@ onBeforeUnmount(() => {
   height: 5rem;
 }
 
-.main-header.visible {
-  transform: translateZ(0);
-}
-
 .main-header {
   background-color: var(--juejin-navigation);
   position: fixed;
@@ -123,6 +119,10 @@ onBeforeUnmount(() => {
   transition: transform 0.2s;
   z-index: 250;
   transform: translate3d(0, -100%, 0);
+
+  &.visible {
+    transform: translateZ(0);
+  }
 
   .container {
     margin: auto;
@@ -172,11 +172,6 @@ onBeforeUnmount(() => {
   }
 }
 
-.nav-item.link-item {
-  padding: 0;
-  height: 5rem;
-}
-
 .phone-hide .nav-item.link-item a:not(.no-hover):hover:not(.no-border)::before {
   content: '';
   position: absolute;
@@ -187,11 +182,6 @@ onBeforeUnmount(() => {
   height: 2px;
   background-color: #1e80ff;
   width: calc(100% - 2rem);
-}
-
-.nav-item.active > a {
-  color: var(--juejin-font-brand1-normal);
-  font-weight: 500;
 }
 
 .nav-item {
@@ -206,13 +196,40 @@ onBeforeUnmount(() => {
   cursor: pointer;
   position: relative;
 
+  &.link-item {
+    padding: 0;
+    height: 5rem;
+  }
+
+  &.active > a {
+    color: var(--juejin-font-brand1-normal);
+    font-weight: 500;
+  }
+
+  &:hover > a {
+    color: var(--juejin-font-1);
+  }
+
+  &.notification {
+    position: relative;
+  }
+
   a {
     color: var(--juejin-font-2);
   }
-}
 
-.nav-item:hover > a {
-  color: var(--juejin-font-1);
+  .avatar-wrapper .avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  &.menu {
+    padding-left: 0;
+    position: relative;
+    background-color: var(--juejin-navigation);
+  }
 }
 
 .phone-hide .nav-item.link-item a {
@@ -256,30 +273,13 @@ li.vip-entry {
   }
 }
 
-.nav-item.notification {
-  position: relative;
-}
-
 .notification {
   padding-right: 2rem;
   background-color: var(--juejin-navigation);
-}
 
-.notification-icon path {
-  fill: var(--juejin-font-3);
-}
-
-.nav-item .avatar-wrapper .avatar {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  position: relative;
-}
-
-.nav-item.menu {
-  padding-left: 0;
-  position: relative;
-  background-color: var(--juejin-navigation);
+  &-icon path {
+    fill: var(--juejin-font-3);
+  }
 }
 
 .add-group {

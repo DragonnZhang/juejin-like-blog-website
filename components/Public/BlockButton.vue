@@ -34,11 +34,11 @@ button {
 
   border: 1px solid #2986ff;
   color: #1e80ff;
-}
 
-.line:hover {
-  border: 1px solid #2e58a5;
-  color: #4783f7;
+  &:hover {
+    border: 1px solid #2e58a5;
+    color: #4783f7;
+  }
 }
 
 .thin {
@@ -49,10 +49,10 @@ button {
 
 .primary {
   background-color: #1e80ff;
-}
 
-.primary:hover {
-  background-color: var(--juejin-brand-2-hover);
+  &:hover {
+    background-color: var(--juejin-brand-2-hover);
+  }
 }
 
 .medium {

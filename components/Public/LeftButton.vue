@@ -37,25 +37,25 @@ defineProps<{
     vertical-align: middle;
     transition: all 0.15s linear;
   }
+
+  &.with-badge:after {
+    content: attr(badge);
+    position: absolute;
+    top: 0;
+    left: 75%;
+    height: 17px;
+    line-height: 17px;
+    padding: 0 5px;
+    border-radius: 9px;
+    font-size: 11px;
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--juejin-font-4);
+    color: #fff;
+  }
 }
 
 .panel-btn:hover .sprite-icon {
   color: var(--juejin-font-2);
-}
-
-.panel-btn.with-badge:after {
-  content: attr(badge);
-  position: absolute;
-  top: 0;
-  left: 75%;
-  height: 17px;
-  line-height: 17px;
-  padding: 0 5px;
-  border-radius: 9px;
-  font-size: 11px;
-  text-align: center;
-  white-space: nowrap;
-  background-color: var(--juejin-font-4);
-  color: #fff;
 }
 </style>

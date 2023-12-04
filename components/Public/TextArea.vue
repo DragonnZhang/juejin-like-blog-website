@@ -51,15 +51,15 @@ textarea {
     all 0.3s,
     height 0s;
   resize: none;
-}
 
-textarea:hover {
-  background: var(--juejin-panel-hover-color);
-  border-color: var(--juejin-panel-hover-border-color);
-}
+  &:hover {
+    background: var(--juejin-panel-hover-color);
+    border-color: var(--juejin-panel-hover-border-color);
+  }
 
-textarea:focus {
-  background-color: var(--juejin-background-color-4);
-  border-color: var(--juejin-panel-hover-border-color);
+  &:focus {
+    background-color: var(--juejin-background-color-4);
+    border-color: var(--juejin-panel-hover-border-color);
+  }
 }
 </style>
