@@ -18,4 +18,5 @@ export type MainData = {
 export type VirtualListProps<T> = {
   itemHeight: number
   dataSource: T[]
+  viewHeight: number
 }

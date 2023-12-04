@@ -2,10 +2,6 @@
 import MainViewBodyCardListItem from '~/components/MainView/MainViewBodyCardListItem.vue'
 import VirtualList from '~/components/Public/VirtualList.vue'
 
-await new Promise((resolve) => {
-  setTimeout(resolve, 500)
-})
-
 const { articleList } = await $fetch('/api/articleList')
 const bodyData = ref(articleList.slice(0, 15))
 
@@ -18,7 +14,7 @@ function handleGetMoreData() {
 
 <template>
   <div class="entry-list list">
-    <VirtualList :dataSource="bodyData" :itemHeight="99" @getMoreData="handleGetMoreData">
+    <VirtualList :dataSource="bodyData" :itemHeight="99" :viewHeight="900" @getMoreData="handleGetMoreData">
       <template #item="{ item }">
         <MainViewBodyCardListItem :data="item" />
       </template>

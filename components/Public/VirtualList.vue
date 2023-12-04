@@ -6,15 +6,26 @@ const props = defineProps<VirtualListProps<T & { article_id: string }>>()
 const emit = defineEmits<{
   getMoreData: []
 }>()
+defineSlots<{
+  item(props: { item: T }): never
+}>()
 
 const state = reactive({
-  startIndex: 0,
-  viewHeight: 1000
+  startIndex: 0
 })
 
-const maxCount = computed(() => Math.ceil(state.viewHeight / props.itemHeight) + 100)
+/*
+maxCount: Elements to render in the view, should be viewHeight / itemHeight + 1.
+          Use Math.ceil and + 1 to make sure elements can fill the space.
+endIndex: startIndex + maxCount
+renderList: Elements to render, dataSource[startIndex, endIndex]
+*/
+const maxCount = computed(() => Math.ceil(props.viewHeight / props.itemHeight) + 1)
 const endIndex = computed(() => Math.min(props.dataSource.length, state.startIndex + maxCount.value))
 const renderList = computed(() => props.dataSource.slice(state.startIndex, endIndex.value))
+
+// to fill the space that vanished elements should occupy
+const marginTop = computed(() => state.startIndex * props.itemHeight)
 
 const containerRef = ref<HTMLDivElement>()
 let topDistance: undefined | number
@@ -24,7 +35,7 @@ onMounted(() => {
 })
 
 const handleScroll = throttle(() => {
-  if (typeof topDistance === 'number') {
+  if (topDistance) {
     state.startIndex = Math.max(Math.floor((window.scrollY - topDistance) / props.itemHeight), 0)
   }
 }, 30)
@@ -48,7 +59,7 @@ watchEffect(() => {
 
 <template>
   <div class="virtual-list-container" ref="containerRef" v-scroll="handleScroll">
-    <div class="virtual-list-content">
+    <div class="virtual-list-content" :style="{ 'margin-top': `${marginTop}px` }">
       <div class="virtual-list-item" v-for="item in renderList" :key="item.article_id">
         <slot name="item" :item="item"></slot>
       </div>
