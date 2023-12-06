@@ -6,9 +6,7 @@ const { articleList } = await $fetch('/api/articleList')
 const bodyData = ref(articleList.slice(0, 15))
 
 function handleGetMoreData() {
-  setTimeout(() => {
-    bodyData.value = articleList
-  }, 1000)
+  bodyData.value = articleList
 }
 </script>
 
