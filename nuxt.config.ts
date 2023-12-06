@@ -3,6 +3,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   pages: true,
   runtimeConfig: {
-    mongoUrl: ''
+    mongoUrl: '',
+    mongoUsername: '',
+    mongoPwd: ''
   }
 })
