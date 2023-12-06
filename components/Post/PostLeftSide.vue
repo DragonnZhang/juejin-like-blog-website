@@ -13,9 +13,9 @@ defineProps<{
 <template>
   <div class="article-suspended-panel dynamic-data-ready">
     <LeftBar />
-    <LeftButton @click.prevent="console.log(1)" :has-badge="likes !== 0" type="icon-zan" :badge-number="likes" />
-    <LeftButton :has-badge="comments !== 0" type="icon-comment" :badge-number="comments" />
-    <LeftButton :has-badge="collections !== 0" type="icon-collect" :badge-number="collections" />
+    <LeftButton @click.prevent="console.log(1)" :has-badge="Boolean(likes)" type="icon-zan" :badge-number="likes" />
+    <LeftButton :has-badge="Boolean(comments)" type="icon-comment" :badge-number="comments" />
+    <LeftButton :has-badge="Boolean(collections)" type="icon-collect" :badge-number="collections" />
     <LeftButton :has-badge="false" type="icon-share" />
   </div>
 </template>
