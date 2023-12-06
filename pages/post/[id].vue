@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import MainViewHeader from '~/components/MainView/MainViewHeader.vue'
 import PostMain from '~/components/Post/PostMain.vue'
+import { Article } from '~/utils/type'
 
 const route = useRoute()
 const id = route.params.id as string
 
-const { articleData } = await $fetch('/api/articleInfo', {
+const { data } = await useFetch('/api/articleInfo', {
   method: 'post',
   body: {
     id: id
   }
 })
 
-const data = ref([
+const articleData: Article = data.value!.articleData
+
+const headerData = ref([
   {
     text: '首页',
     url: '/',
@@ -58,6 +61,6 @@ const url = ref('https://p3-passport.byteimg.com/img/user-avatar/4d142fd37c164eb
   <Head>
     <Title>{{ articleData.title }}</Title>
   </Head>
-  <MainViewHeader :data="data" :avatar-u-r-l="url" />
+  <MainViewHeader :data="headerData" :avatar-u-r-l="url" />
   <PostMain :id="id" :articleData="articleData" />
 </template>

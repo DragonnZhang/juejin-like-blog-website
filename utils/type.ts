@@ -20,3 +20,20 @@ export type VirtualListProps<T> = {
   dataSource: T[]
   viewHeight: number
 }
+
+export type Article = {
+  title: string
+  abstract: string
+  author: string
+  publishTime: string
+  content: string
+  views: number
+  likes: number
+  collections: number
+  comments: number
+  imgUrl: string
+  type: string
+  tags: {
+    tag: string
+  }[]
+}
