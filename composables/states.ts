@@ -3,7 +3,7 @@ export const useArticleInformation = () =>
   useState('articleInfo', () =>
     ref({
       title: '',
-      author: '',
+      author: 'dragon',
       abstract: '',
       cover: '',
       type: ''
