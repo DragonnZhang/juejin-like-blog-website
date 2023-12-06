@@ -12,7 +12,8 @@ const { data } = toRefs(props)
 const router = useRouter()
 function redirect(e: Event) {
   if (e.target === e.currentTarget) {
-    router.push(`/post/${data.value.article_id}`)
+    const url = router.resolve(`/post/${data.value.article_id}`)
+    window.open(url.href)
   }
 }
 </script>
@@ -22,17 +23,17 @@ function redirect(e: Event) {
     <div @click="redirect" class="content-wrapper">
       <div class="content-main">
         <div class="title-row">
-          <NuxtLink :to="`/post/${data.article_id}`" class="title">{{ data.title }}</NuxtLink>
+          <NuxtLink :to="`/post/${data.article_id}`" target="_blank" class="title">{{ data.title }}</NuxtLink>
         </div>
         <div class="abstract">
-          <NuxtLink :to="`/post/${data.article_id}`">
+          <NuxtLink :to="`/post/${data.article_id}`" target="_blank">
             <div>{{ data.abstract }}</div>
           </NuxtLink>
         </div>
         <div @click="redirect" class="entry-footer">
           <ul class="action-list jh-timeline-action-area">
             <li class="item meta-container">
-              <NuxtLink to="" class="user-message">{{ data.author }}</NuxtLink>
+              <NuxtLink to="" class="user-message" target="_blank">{{ data.author }}</NuxtLink>
               <div class="footer-divider"></div>
             </li>
             <li class="item view">
@@ -51,7 +52,7 @@ function redirect(e: Event) {
           </div>
         </div>
       </div>
-      <img :src="data.imgUrl" :alt="data.alt" class="lazy thumb" loading="lazy" />
+      <img v-if="data.imgUrl" :src="data.imgUrl" :alt="data.alt" class="lazy thumb" loading="lazy" />
     </div>
   </div>
 </template>
