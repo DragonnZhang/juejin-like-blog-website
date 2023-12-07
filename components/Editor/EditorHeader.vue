@@ -7,27 +7,75 @@ import UploadImage from '~/components/Public/UploadImage.vue'
 import ChoiceBlock from '~/components/Public/ChoiceBlock.vue'
 import Select from '~/components/Public/Select.vue'
 import { useArticle, useArticleInformation } from '~/composables/states'
+import { Validation, Article, ValidationKey } from '~/utils/type'
+import { validateString, validateStringArray } from '~/utils/util'
 
 const article = useArticle()
 const articleInfo = useArticleInformation()
 
+const validator: Validation = {
+  type: {
+    validate: validateString,
+    error: '请选择一个分类'
+  },
+  tags: {
+    validate: validateStringArray,
+    error: '至少添加一个标签'
+  },
+  title: {
+    validate: validateString,
+    error: '标题不能为空'
+  },
+  abstract: {
+    validate: validateString,
+    error: '摘要不满足最低50字的要求',
+    min: 50
+  },
+  content: {
+    validate: validateString,
+    error: '内容不能为空'
+  }
+}
+
 async function publishArticle() {
+  const body: Article = {
+    title: articleInfo.value.title,
+    abstract: articleInfo.value.abstract,
+    author: articleInfo.value.author,
+    publishTime: new Date(),
+    content: article.value,
+    views: 0,
+    likes: 0,
+    collections: 0,
+    comments: 0,
+    imgUrl: articleInfo.value.cover,
+    tags: articleInfo.value.tags,
+    type: articleInfo.value.type
+  }
+
+  for (let key in validator) {
+    const k = key as ValidationKey
+    const value = body[k]
+    const validateObj = validator[k]
+    const { validate, error } = validateObj
+    const result = validate(value as string & string[], validateObj.min)
+    if (!result) {
+      alert(error)
+      return
+    }
+  }
+
+  const tags = {
+    tags: body.tags.map((tag) => {
+      return {
+        tag
+      }
+    })
+  }
+
   await $fetch('/api/saveArticle', {
     method: 'post',
-    body: {
-      title: articleInfo.value.title,
-      abstract: articleInfo.value.abstract,
-      author: articleInfo.value.author,
-      publishTime: new Date(),
-      content: article.value,
-      views: 0,
-      likes: 0,
-      collections: 0,
-      comments: 0,
-      imgUrl: articleInfo.value.cover,
-      tags: [],
-      type: articleInfo.value.type
-    }
+    body: Object.assign(body, tags)
   })
   closePanel()
 }
@@ -42,7 +90,6 @@ const choices = ['后端', '前端', 'Android', 'iOS', '人工智能', '开发�
 
 // Select
 const selection = ['面试', '前端', '后端', 'AI', 'Github', 'JavaScript', '1', '2', '3']
-const res = ref([])
 
 // Publish
 const publish = ref()
@@ -64,7 +111,7 @@ onMounted(() => {
             <ChoiceBlock v-model="articleInfo.type" :choices="choices" />
           </FormItem>
           <FormItem label="添加标签：" :required="true">
-            <Select :selection="selection" v-model="res" :max-length="3"></Select>
+            <Select :selection="selection" v-model="articleInfo.tags" :max-length="3"></Select>
           </FormItem>
           <FormItem label="文章封面：">
             <UploadImage v-model="articleInfo.cover" />

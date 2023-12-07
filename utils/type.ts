@@ -25,7 +25,7 @@ export type Article = {
   title: string
   abstract: string
   author: string
-  publishTime: string
+  publishTime: string | Date
   content: string
   views: number
   likes: number
@@ -33,7 +33,20 @@ export type Article = {
   comments: number
   imgUrl: string
   type: string
-  tags: {
-    tag: string
-  }[]
+  tags: string[]
+}
+
+export type ValidatorString = (input: string, min?: number) => boolean
+export type ValidatorStringArray = (input: string[]) => boolean
+
+export type ValidationKey = 'type' | 'tags' | 'title' | 'abstract' | 'content'
+
+export type Validation = {
+  [k in ValidationKey]: k extends keyof Article
+    ? {
+        validate: Article[k] extends string ? ValidatorString : ValidatorStringArray
+        error: string
+        min?: number
+      }
+    : never
 }
