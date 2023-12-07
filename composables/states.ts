@@ -6,7 +6,8 @@ export const useArticleInformation = () =>
       author: 'dragon',
       abstract: '',
       cover: '',
-      type: ''
+      type: '',
+      tags: [] as string[]
     })
   )
 export const useTopVanish = () => useState('topVanish', () => false)
