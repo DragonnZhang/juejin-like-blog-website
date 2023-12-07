@@ -22,10 +22,10 @@ function redirect(e: Event) {
   <div @click="redirect" class="entry">
     <div @click="redirect" class="content-wrapper">
       <div class="content-main">
-        <div class="title-row">
+        <div class="title-row" @click="redirect">
           <NuxtLink :to="`/post/${data.article_id}`" target="_blank" class="title">{{ data.title }}</NuxtLink>
         </div>
-        <div class="abstract">
+        <div class="abstract" @click="redirect">
           <NuxtLink :to="`/post/${data.article_id}`" target="_blank">
             <div>{{ data.abstract }}</div>
           </NuxtLink>
@@ -82,7 +82,7 @@ function redirect(e: Event) {
 
       .title-row {
         display: flex;
-        margin-bottom: 2px;
+        padding-bottom: 2px;
 
         .title {
           font-weight: 600;
@@ -99,7 +99,7 @@ function redirect(e: Event) {
       }
 
       .abstract {
-        margin-bottom: 4px;
+        padding-bottom: 4px;
         font-weight: 400;
 
         a {
