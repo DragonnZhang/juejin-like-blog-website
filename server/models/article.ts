@@ -40,7 +40,7 @@ const ArticleSchema = new mongoose.Schema(
     },
     imgUrl: {
       type: String,
-      required: true
+      required: false
     },
     type: {
       type: String,
