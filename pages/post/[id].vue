@@ -3,17 +3,16 @@ import MainViewHeader from '~/components/MainView/MainViewHeader.vue'
 import PostMain from '~/components/Post/PostMain.vue'
 import { Article } from '~/utils/type'
 
-const route = useRoute()
-const id = route.params.id as string
+const id = useRoute().params.id as string
 
 const { data } = await useFetch('/api/articleInfo', {
   method: 'post',
   body: {
-    id: id
+    id
   }
 })
 
-const articleData: Article = data.value!.articleData
+const articleData: Article = data.value!
 
 const headerData = ref([
   {

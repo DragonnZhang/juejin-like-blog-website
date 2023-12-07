@@ -52,7 +52,7 @@ function redirect(e: Event) {
           </div>
         </div>
       </div>
-      <img v-if="data.imgUrl" :src="data.imgUrl" :alt="data.alt" class="lazy thumb" loading="lazy" />
+      <img v-if="data.imgUrl" :src="data.imgUrl" class="lazy thumb" loading="lazy" @click="redirect" />
     </div>
   </div>
 </template>
