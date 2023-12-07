@@ -1,13 +1,15 @@
+import { ArticleState } from '~/utils/type'
+
 export const useArticle = () => useState('article', () => '')
 export const useArticleInformation = () =>
   useState('articleInfo', () =>
-    ref({
+    ref<ArticleState>({
       title: '',
       author: 'dragon',
       abstract: '',
-      cover: '',
+      imgUrl: '',
       type: '',
-      tags: [] as string[]
+      tags: []
     })
   )
 export const useTopVanish = () => useState('topVanish', () => false)

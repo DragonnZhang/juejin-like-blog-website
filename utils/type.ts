@@ -21,19 +21,22 @@ export type VirtualListProps<T> = {
   viewHeight: number
 }
 
-export type Article = {
+export type ArticleState = {
   title: string
   abstract: string
   author: string
+  imgUrl: string
+  type: string
+  tags: string[]
+}
+
+export type Article = ArticleState & {
   publishTime: string | Date
   content: string
   views: number
   likes: number
   collections: number
   comments: number
-  imgUrl: string
-  type: string
-  tags: string[]
 }
 
 export type ValidatorString = (input: string, min?: number) => boolean
