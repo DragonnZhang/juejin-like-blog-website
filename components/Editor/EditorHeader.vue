@@ -10,6 +10,15 @@ import { useArticle, useArticleInformation } from '~/composables/states'
 import { Validation, Article, ValidationKey } from '~/utils/type'
 import { validateString, validateStringArray } from '~/utils/util'
 
+withDefaults(
+  defineProps<{
+    update?: boolean
+  }>(),
+  {
+    update: false
+  }
+)
+
 const article = useArticle()
 const articleInfo = useArticleInformation()
 
@@ -48,7 +57,7 @@ async function publishArticle() {
     likes: 0,
     collections: 0,
     comments: 0,
-    imgUrl: articleInfo.value.cover,
+    imgUrl: articleInfo.value.imgUrl,
     tags: articleInfo.value.tags,
     type: articleInfo.value.type
   }
@@ -73,15 +82,21 @@ async function publishArticle() {
     })
   }
 
-  await $fetch('/api/saveArticle', {
+  await useFetch('/api/saveArticle', {
     method: 'post',
     body: Object.assign(body, tags)
   })
-  closePanel()
+
+  switchPanel()
 }
 
+async function updateArticle() {
+  switchPanel()
+}
+
+// panel
 const displayPanel = ref(false)
-function closePanel() {
+function switchPanel() {
   displayPanel.value = !displayPanel.value
 }
 
@@ -105,7 +120,7 @@ onMounted(() => {
     <input placeholder="输入文章标题..." spellcheck="false" maxlength="80" class="title-input" v-model="articleInfo.title" />
     <div class="right-box">
       <div class="publish-popup">
-        <BlockButton id="publish-button" type="primary" size="medium" @click="closePanel">发布</BlockButton>
+        <BlockButton id="publish-button" type="primary" size="medium" @click="switchPanel">{{ update ? '更新' : '发布' }}</BlockButton>
         <Panel :relate-el="publish" v-model="displayPanel" title="发布文章">
           <FormItem label="分类：" :required="true">
             <ChoiceBlock v-model="articleInfo.type" :choices="choices" />
@@ -114,15 +129,16 @@ onMounted(() => {
             <Select :selection="selection" v-model="articleInfo.tags" :max-length="3"></Select>
           </FormItem>
           <FormItem label="文章封面：">
-            <UploadImage v-model="articleInfo.cover" />
+            <UploadImage v-model="articleInfo.imgUrl" />
           </FormItem>
           <FormItem label="编辑摘要：" :required="true">
             <TextArea v-model="articleInfo.abstract" />
           </FormItem>
           <template #footer>
             <div class="btn-container">
-              <BlockButton type="line" size="thin" style="margin-right: 16px" @click="closePanel">取消</BlockButton>
-              <BlockButton type="primary" size="thin" @click="publishArticle">确定并发布</BlockButton>
+              <BlockButton type="line" size="thin" style="margin-right: 16px" @click="switchPanel">取消</BlockButton>
+              <BlockButton v-if="!update" type="primary" size="thin" @click="publishArticle">确定并发布</BlockButton>
+              <BlockButton v-else type="primary" size="thin" @click="updateArticle">确定并更新</BlockButton>
             </div>
           </template>
         </Panel>

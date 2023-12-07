@@ -6,13 +6,15 @@ import highlight from '@bytemd/plugin-highlight-ssr'
 import frontmatter from '@bytemd/plugin-frontmatter'
 import highlightStyle from '~/utils/highlightStyle'
 
-defineProps<{
+const props = defineProps<{
   id: string
   title: string
   content: string
   author: string
   views: number
 }>()
+
+const router = useRouter()
 
 const plugins = ref([highlight(), frontmatter()])
 
@@ -22,6 +24,11 @@ onMounted(() => {
   body?.insertBefore(style, body.firstChild)
   style.innerHTML = highlightStyle['github']
 })
+
+function editArticle() {
+  const url = router.resolve(`/editor/${props.id}`)
+  window.open(url.href)
+}
 </script>
 
 <template>
@@ -46,7 +53,7 @@ onMounted(() => {
           </div>
         </div>
         <div style="flex: 1"></div>
-        <span class="author-info-edit-btn" style="margin-left: 16px">编辑</span>
+        <span class="author-info-edit-btn" style="margin-left: 16px" @click="editArticle">编辑</span>
       </div>
       <Viewer :value="content" :plugins="plugins" />
     </article>
