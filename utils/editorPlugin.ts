@@ -63,11 +63,15 @@ export function highlightPlugin(): BytemdPlugin {
 export function themePlugin(): BytemdPlugin {
   return {
     viewerEffect({ file }) {
-      if (!file.frontmatter) return
+      const style = singleThemeStyle()
+
+      if (!file.frontmatter) {
+        style.innerHTML = themeStyle['juejin']
+        return
+      }
 
       const { theme } = file.frontmatter as { theme: string }
 
-      const style = singleThemeStyle()
       if (theme) {
         style.innerHTML = themeStyle[theme as keyof typeof themeStyle] ?? ''
       } else {

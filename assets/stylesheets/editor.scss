@@ -13,7 +13,7 @@
     Apple Color Emoji,
     Segoe UI Emoji;
   color: var(--juejin-font-white);
-  background-color: var(--juejin-background-color);
+  background-color: var(--juejin-background-color-5);
   height: calc(100vh - 5.5rem);
   border: 0;
 
@@ -59,6 +59,10 @@
 
   pre > span {
     color: var(--juejin-font-white);
+  }
+
+  .cm-s-default .cm-link {
+    color: #ec7f4f;
   }
 
   .bytemd-dropdown-item:hover {
