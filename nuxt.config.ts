@@ -6,5 +6,8 @@ export default defineNuxtConfig({
     mongoUrl: '',
     mongoUsername: '',
     mongoPwd: ''
+  },
+  vue: {
+    defineModel: true
   }
 })

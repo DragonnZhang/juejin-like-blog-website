@@ -1,15 +1,12 @@
 <script setup lang="ts">
-defineProps<{
-  modelValue: string
-}>()
-defineEmits(['update:modelValue'])
+const modelValue = defineModel<string>()
 </script>
 
 <template>
   <div class="input">
     <textarea
       :value="modelValue"
-      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+      @input="modelValue = ($event.target as HTMLInputElement).value"
       maxlength="100"
       rows="5"
       spellcheck="false"

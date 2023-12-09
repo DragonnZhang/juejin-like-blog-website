@@ -1,19 +1,13 @@
 <script setup lang="ts">
 defineProps<{
   choices: string[]
-  modelValue: string
 }>()
-defineEmits(['update:modelValue'])
+
+const modelValue = defineModel<string>()
 </script>
 
 <template>
-  <div
-    class="item"
-    :class="{ active: choice === modelValue }"
-    v-for="choice in choices"
-    :key="choice"
-    @click="$emit('update:modelValue', choice)"
-  >
+  <div class="item" :class="{ active: choice === modelValue }" v-for="choice in choices" :key="choice" @click="modelValue = choice">
     {{ choice }}
   </div>
 </template>

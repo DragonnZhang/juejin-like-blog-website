@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
-  modelValue: string
   type: 'md' | 'image'
   id: string
 }>()
-const emit = defineEmits(['update:modelValue'])
+
+const modelValue = defineModel<string>()
 
 // compute the type input accepts
 const accept = computed(() => {
@@ -16,7 +16,7 @@ const accept = computed(() => {
   return strategy[props.type]
 })
 
-function readFileToString(file: File) {
+function readFileToString(file: File): Promise<string> {
   return new Promise((resolve) => {
     const reader = new FileReader()
 
@@ -35,12 +35,12 @@ function readFileToString(file: File) {
   })
 }
 
-function readFileToUrl(file: File) {
+function readFileToUrl(file: File): Promise<string> {
   return new Promise((resolve) => {
     const reader = new FileReader()
 
     reader.onload = function (e: Event) {
-      const url = (e.target as FileReader).result
+      const url = (e.target as FileReader).result as string
       resolve(url)
     }
 
@@ -56,10 +56,10 @@ async function handleFileChange(e: Event) {
   try {
     if (props.type === 'md') {
       const value = await readFileToString(file)
-      emit('update:modelValue', value)
+      modelValue.value = value
     } else if (props.type === 'image') {
       const url = await readFileToUrl(file)
-      emit('update:modelValue', url)
+      modelValue.value = url
     }
   } catch (err) {
     console.log('文件读取出错:', err)

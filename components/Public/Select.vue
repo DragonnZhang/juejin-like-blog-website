@@ -5,21 +5,15 @@ import { useSelect } from '~/composables/states'
 
 const selectOption = useSelect()
 
-const props = defineProps<{
-  modelValue: string[]
+defineProps<{
   selection: string[]
   maxLength: number
 }>()
-const emit = defineEmits(['update:modelValue'])
 
-// bind modelValue to selected to pass to child component
-const selected = ref(props.modelValue)
-watch(selected, () => {
-  emit('update:modelValue', selected.value)
-})
+const modelValue = defineModel<string[]>() as Ref<string[]>
 
 function handleClose(tag: string) {
-  selected.value = props.modelValue.filter((value) => value !== tag)
+  modelValue.value = modelValue.value.filter((value) => value !== tag)
 }
 
 // arrow
@@ -55,8 +49,8 @@ function handleBlur(event: FocusEvent) {
   <div class="select" ref="wrapperRef" :class="{ 'select--hover': focus }">
     <div class="select__wrap" @click="inputFocus">
       <div class="select__content-wrap" tabindex="-1">
-        <div v-if="!selected.length" class="select__placeholder">请搜索添加标签</div>
-        <Tag v-else v-for="tag in selected" :key="tag" @close="handleClose(tag)">{{ tag }}</Tag>
+        <div v-if="!modelValue.length" class="select__placeholder">请搜索添加标签</div>
+        <Tag v-else v-for="tag in modelValue" :key="tag" @close="handleClose(tag)">{{ tag }}</Tag>
         <input class="select__input" ref="input" @focus="handleFocus" @blur="handleBlur" />
       </div>
       <div class="select__icon-wrap">
@@ -81,7 +75,7 @@ function handleBlur(event: FocusEvent) {
       </div>
     </div>
   </div>
-  <SelectOption :show="down" :option="selection" v-model="selected" :maxLength="maxLength" />
+  <SelectOption :show="down" :option="selection" v-model="modelValue" :maxLength="maxLength" />
 </template>
 
 <style scoped lang="scss">

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 const props = defineProps<{
-  modelValue: boolean
   title: string
   relateEl: HTMLElement
 }>()
-const emit = defineEmits(['update:modelValue'])
+
+const modelValue = defineModel<boolean>()
 
 function handleClose(e: Event) {
   // when I click delete button or sth else,
   // e.target will no longer exists in dom, so added document contains judge
   if (props.relateEl.contains(e.target as Node) || !document.contains(e.target as Node)) return
-  emit('update:modelValue', false)
+  modelValue.value = false
 }
 </script>
 

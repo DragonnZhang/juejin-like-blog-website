@@ -1,34 +1,25 @@
 <script setup lang="ts">
 import UploadFile from '~/components/Public/UploadFile.vue'
 
-const props = defineProps<{
-  modelValue: string
-}>()
-const emit = defineEmits(['update:modelValue'])
-
-// bind modelValue to url so that when url changes modelValue will also change.
-const url = ref(props.modelValue)
-watch(url, () => {
-  emit('update:modelValue', url.value)
-})
+const modelValue = defineModel<string>()
 
 function handleClick() {
   ;(document.querySelector('#upload-image') as HTMLInputElement).click()
 }
 function handleDelete() {
-  url.value = ''
+  modelValue.value = ''
 }
 </script>
 
 <template>
-  <button v-if="!url" class="select-btn" @click="handleClick">
+  <button v-if="!modelValue" class="select-btn" @click="handleClick">
     <div class="button-slot">
       <img src="~/assets/svg/add.svg" height="20" alt="add_cover" />
       <div class="upload">上传封面</div>
     </div>
   </button>
   <div v-else class="preview-box">
-    <img :src="url" class="preview-image" />
+    <img :src="modelValue" class="preview-image" />
     <button class="delete-button" @click="handleDelete">
       <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
         <path
@@ -51,7 +42,7 @@ function handleDelete() {
       </svg>
     </button>
   </div>
-  <UploadFile id="upload-image" v-model="url" type="image" />
+  <UploadFile id="upload-image" v-model="modelValue" type="image" />
 </template>
 
 <style scoped lang="scss">

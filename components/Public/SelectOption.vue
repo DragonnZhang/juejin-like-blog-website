@@ -4,25 +4,22 @@ import { useSelect } from '~/composables/states'
 const selectOption = useSelect()
 
 const props = defineProps<{
-  modelValue: string[]
   option: string[]
   show: boolean
   maxLength: number
 }>()
-const emit = defineEmits(['update:modelValue'])
+
+const modelValue = defineModel<string[]>() as Ref<string[]>
 
 function selectItem(item: string) {
-  if (props.modelValue.indexOf(item) !== -1) {
+  if (modelValue.value.indexOf(item) !== -1) {
     // remove this element
-    emit(
-      'update:modelValue',
-      props.modelValue.filter((v) => v !== item)
-    )
+    modelValue.value = modelValue.value.filter((v) => v !== item)
     return
   }
   // add element
-  if (props.modelValue.length >= props.maxLength || props.modelValue.indexOf(item) !== -1) return
-  emit('update:modelValue', [...props.modelValue, item])
+  if (modelValue.value.length >= props.maxLength || modelValue.value.indexOf(item) !== -1) return
+  modelValue.value = [...modelValue.value, item]
 }
 </script>
 
