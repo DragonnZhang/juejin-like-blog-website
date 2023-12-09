@@ -23,11 +23,15 @@ const highlightOption = [
 export function highlightPlugin(): BytemdPlugin {
   return {
     viewerEffect({ file }) {
-      if (!file.frontmatter) return
+      const style = singleHighlightStyle()
+
+      if (!file.frontmatter) {
+        style.innerHTML = highlightStyle['github']
+        return
+      }
 
       const { highlight } = file.frontmatter as { highlight: string }
 
-      const style = singleHighlightStyle()
       if (highlight) {
         style.innerHTML = highlightStyle[highlight as keyof typeof highlightStyle] ?? highlightStyle.github
       } else {
