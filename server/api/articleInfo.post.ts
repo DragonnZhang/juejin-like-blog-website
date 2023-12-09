@@ -6,8 +6,10 @@ export default defineEventHandler(async (event) => {
 
   const articleData = await articleModel.findById(id)
 
-  const t = articleData?.tags.map((v) => v.tag)
-  const newData = Object.assign(articleData!['_doc' as keyof typeof articleData] as Article, { tags: t })
-
-  return newData
+  if (articleData) {
+    const t = articleData.tags.map((v) => v.tag)
+    const newData = Object.assign({ articleId: articleData['_id'] }, articleData['_doc' as keyof typeof articleData], { tags: t })
+    return newData as Article
+  }
+  return null
 })

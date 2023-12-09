@@ -46,22 +46,7 @@ const validator: Validation = {
   }
 }
 
-async function publishArticle() {
-  const body: Article = {
-    title: articleInfo.value.title,
-    abstract: articleInfo.value.abstract,
-    author: articleInfo.value.author,
-    publishTime: new Date(),
-    content: article.value,
-    views: 0,
-    likes: 0,
-    collections: 0,
-    comments: 0,
-    imgUrl: articleInfo.value.imgUrl,
-    tags: articleInfo.value.tags,
-    type: articleInfo.value.type
-  }
-
+function validateData(body: Article | Omit<Article, 'articleId'>): boolean | string {
   for (let key in validator) {
     const k = key as ValidationKey
     const value = body[k]
@@ -69,9 +54,33 @@ async function publishArticle() {
     const { validate, error } = validateObj
     const result = validate(value as string & string[], validateObj.min)
     if (!result) {
-      alert(error)
-      return
+      return error
     }
+  }
+  return true
+}
+
+async function publishArticle() {
+  const body: Omit<Article, 'articleId'> = {
+    title: articleInfo.value.title,
+    abstract: articleInfo.value.abstract,
+    author: articleInfo.value.author,
+    publishTime: new Date(),
+    content: article.value,
+    views: articleInfo.value.views,
+    likes: articleInfo.value.likes,
+    collections: articleInfo.value.collections,
+    comments: articleInfo.value.comments,
+    imgUrl: articleInfo.value.imgUrl,
+    tags: articleInfo.value.tags,
+    type: articleInfo.value.type
+  }
+
+  const res = validateData(body)
+
+  if (typeof res === 'string') {
+    alert(res)
+    return
   }
 
   const tags = {
@@ -84,13 +93,49 @@ async function publishArticle() {
 
   await useFetch('/api/saveArticle', {
     method: 'post',
-    body: Object.assign(body, tags)
+    body: Object.assign({}, body, tags)
   })
 
   switchPanel()
 }
 
 async function updateArticle() {
+  const body: Article = {
+    articleId: articleInfo.value.articleId,
+    title: articleInfo.value.title,
+    abstract: articleInfo.value.abstract,
+    author: articleInfo.value.author,
+    publishTime: new Date(),
+    content: article.value,
+    views: articleInfo.value.views,
+    likes: articleInfo.value.likes,
+    collections: articleInfo.value.collections,
+    comments: articleInfo.value.comments,
+    imgUrl: articleInfo.value.imgUrl,
+    tags: articleInfo.value.tags,
+    type: articleInfo.value.type
+  }
+
+  const res = validateData(body)
+
+  if (typeof res === 'string') {
+    alert(res)
+    return
+  }
+
+  const tags = {
+    tags: body.tags.map((tag) => {
+      return {
+        tag
+      }
+    })
+  }
+
+  await useFetch('/api/updateArticle', {
+    method: 'post',
+    body: Object.assign({}, body, tags)
+  })
+
   switchPanel()
 }
 

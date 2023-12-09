@@ -5,7 +5,7 @@ export default defineEventHandler(async () => {
 
   return {
     articleList: data.map((v) => {
-      return Object.assign({ article_id: v._id }, v['_doc' as keyof typeof v])
+      return Object.assign({}, { articleId: v._id }, v['_doc' as keyof typeof v])
     })
   }
 })

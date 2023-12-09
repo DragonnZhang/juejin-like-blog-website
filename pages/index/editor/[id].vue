@@ -15,11 +15,15 @@ const data = (
 const article = useArticle()
 const articleInfo = useArticleInformation() as Ref<ArticleState>
 
-if (data.value) {
-  article.value = data.value.content
+saveInformation()
 
-  for (let key in articleInfo.value) {
-    articleInfo.value[key] = data.value[key]
+function saveInformation() {
+  if (data.value) {
+    article.value = data.value.content
+
+    for (let key in articleInfo.value) {
+      articleInfo.value[key] = data.value[key]
+    }
   }
 }
 </script>
