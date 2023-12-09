@@ -102,6 +102,8 @@ async function publishArticle() {
   })
 
   switchPanel()
+
+  alert('发布成功')
 }
 
 async function updateArticle() {
@@ -118,6 +120,8 @@ async function updateArticle() {
   })
 
   switchPanel()
+
+  alert('更新成功')
 }
 
 // panel
