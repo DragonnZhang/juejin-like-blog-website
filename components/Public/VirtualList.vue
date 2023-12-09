@@ -2,7 +2,7 @@
 import { VirtualListProps } from '~/utils/type'
 import { throttle } from 'lodash-es'
 
-const props = defineProps<VirtualListProps<T & { article_id: string }>>()
+const props = defineProps<VirtualListProps<T & { articleId: string }>>()
 const emit = defineEmits<{
   getMoreData: []
 }>()
@@ -60,7 +60,7 @@ watchEffect(() => {
 <template>
   <div class="virtual-list-container" ref="containerRef" v-scroll="handleScroll">
     <div class="virtual-list-content" :style="{ 'margin-top': `${marginTop}px` }">
-      <div class="virtual-list-item" v-for="item in renderList" :key="item.article_id">
+      <div class="virtual-list-item" v-for="item in renderList" :key="item.articleId">
         <slot name="item" :item="item"></slot>
       </div>
     </div>

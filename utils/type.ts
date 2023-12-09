@@ -4,7 +4,7 @@ export type Tag = {
 }
 
 export type MainData = {
-  article_id: string
+  articleId: string
   title: string
   abstract: string
   author: string
@@ -22,12 +22,17 @@ export type VirtualListProps<T> = {
 }
 
 export type ArticleState = {
+  articleId: string
   title: string
   abstract: string
   author: string
   imgUrl: string
   type: string
   tags: string[]
+  views: number
+  likes: number
+  collections: number
+  comments: number
 }
 
 export type Article = ArticleState & {

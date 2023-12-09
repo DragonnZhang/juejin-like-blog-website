@@ -12,7 +12,7 @@ const { data } = toRefs(props)
 const router = useRouter()
 function redirect(e: Event) {
   if (e.target === e.currentTarget) {
-    const url = router.resolve(`/post/${data.value.article_id}`)
+    const url = router.resolve(`/post/${data.value.articleId}`)
     window.open(url.href)
   }
 }
@@ -23,10 +23,10 @@ function redirect(e: Event) {
     <div @click="redirect" class="content-wrapper">
       <div class="content-main">
         <div class="title-row" @click="redirect">
-          <NuxtLink :to="`/post/${data.article_id}`" target="_blank" class="title">{{ data.title }}</NuxtLink>
+          <NuxtLink :to="`/post/${data.articleId}`" target="_blank" class="title">{{ data.title }}</NuxtLink>
         </div>
         <div class="abstract" @click="redirect">
-          <NuxtLink :to="`/post/${data.article_id}`" target="_blank">
+          <NuxtLink :to="`/post/${data.articleId}`" target="_blank">
             <div>{{ data.abstract }}</div>
           </NuxtLink>
         </div>
