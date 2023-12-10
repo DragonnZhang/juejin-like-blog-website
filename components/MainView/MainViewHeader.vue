@@ -22,7 +22,7 @@ const scrollListener = () => {
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', scrollListener)
+  window.addEventListener('scroll', scrollListener, { passive: true })
 })
 
 onBeforeUnmount(() => {

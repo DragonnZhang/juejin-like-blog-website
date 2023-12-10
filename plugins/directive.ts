@@ -38,7 +38,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     mounted: (el, binding) => {
       if (binding.value) {
         scrollHandler = getScrollHandler(binding)
-        document.addEventListener('scroll', scrollHandler)
+        document.addEventListener('scroll', scrollHandler, { passive: true })
       }
     },
     beforeUnmount: (el, binding) => {
