@@ -44,17 +44,25 @@ const handleScroll = throttle(() => {
 // when props.dataSource is updated, fetchingData will be set false again.
 let fetchingData = false
 
-watch(props.dataSource, () => {
-  fetchingData = false
-})
+watch(
+  () => props.dataSource.length,
+  () => {
+    fetchingData = false
+  }
+)
 
 // reach bottom loading
-watchEffect(() => {
-  if (!fetchingData && endIndex.value >= props.dataSource.length - 1) {
-    fetchingData = true
-    emit('getMoreData')
+watchEffect(
+  () => {
+    if (!fetchingData && endIndex.value >= props.dataSource.length - 1) {
+      fetchingData = true
+      emit('getMoreData')
+    }
+  },
+  {
+    flush: 'post'
   }
-})
+)
 </script>
 
 <template>
