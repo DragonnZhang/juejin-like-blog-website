@@ -270,6 +270,11 @@ li.vip-entry {
     display: flex;
     align-items: center;
     height: 100%;
+
+    .vip-img {
+      width: 25px;
+      height: 26px;
+    }
   }
 }
 
