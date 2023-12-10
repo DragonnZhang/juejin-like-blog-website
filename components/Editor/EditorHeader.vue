@@ -97,7 +97,7 @@ async function publishArticle() {
   }
 
   await useFetch('/api/saveArticle', {
-    method: 'post',
+    method: 'POST',
     body: Object.assign({}, body.value, tags.value)
   })
 
@@ -115,7 +115,7 @@ async function updateArticle() {
   }
 
   await useFetch('/api/updateArticle', {
-    method: 'post',
+    method: 'POST',
     body: Object.assign({}, body.value, tags.value)
   })
 

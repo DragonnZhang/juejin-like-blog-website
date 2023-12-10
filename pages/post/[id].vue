@@ -6,7 +6,7 @@ import { Article } from '~/utils/type'
 const id = useRoute().params.id as string
 
 const { data } = await useFetch('/api/articleInfo', {
-  method: 'post',
+  method: 'POST',
   body: {
     id
   }

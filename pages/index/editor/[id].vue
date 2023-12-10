@@ -5,7 +5,7 @@ import EditorMain from '~/components/Editor/EditorMain.vue'
 const { id } = useRoute().params
 const data = (
   await useFetch('/api/articleInfo', {
-    method: 'post',
+    method: 'POST',
     body: {
       id
     }
