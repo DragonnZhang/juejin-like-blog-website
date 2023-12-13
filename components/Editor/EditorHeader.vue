@@ -7,7 +7,7 @@ import UploadImage from '~/components/Public/UploadImage.vue'
 import ChoiceBlock from '~/components/Public/ChoiceBlock.vue'
 import Select from '~/components/Public/Select.vue'
 import { useArticle, useArticleInformation } from '~/composables/states'
-import { Validation, Article, ValidationKey } from '~/utils/type'
+import type { Validation, Article, ValidationKey } from '~/utils/type'
 import { validateString, validateStringArray } from '~/utils/util'
 
 withDefaults(

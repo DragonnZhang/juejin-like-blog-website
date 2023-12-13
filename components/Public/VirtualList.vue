@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import { VirtualListProps } from '~/utils/type'
+import type { VirtualListProps } from '~/utils/type'
 import { throttle } from 'lodash-es'
 
 const props = defineProps<VirtualListProps<T & { articleId: string }>>()

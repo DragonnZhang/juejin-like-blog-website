@@ -1,4 +1,4 @@
-import { DirectiveBinding } from 'nuxt/dist/app/compat/capi'
+import type { DirectiveBinding } from 'nuxt/dist/app/compat/capi'
 
 const getClickHandler = (el: HTMLElement, binding: DirectiveBinding) => {
   return function (e: Event) {

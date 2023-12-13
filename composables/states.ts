@@ -1,4 +1,4 @@
-import { ArticleState } from '~/utils/type'
+import type { ArticleState } from '~/utils/type'
 
 export const useArticle = () => useState('article', () => '')
 export const useArticleInformation = () =>

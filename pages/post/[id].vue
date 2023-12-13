@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MainViewHeader from '~/components/MainView/MainViewHeader.vue'
 import PostMain from '~/components/Post/PostMain.vue'
-import { Article } from '~/utils/type'
+import type { Article } from '~/utils/type'
 
 const id = useRoute().params.id as string
 

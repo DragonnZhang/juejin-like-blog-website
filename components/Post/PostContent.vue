@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import View from '../SVG/View.vue'
 import Time from '../SVG/Time.vue'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { Viewer } from '@bytemd/vue-next'
 import highlight from '@bytemd/plugin-highlight-ssr'
 import frontmatter from '@bytemd/plugin-frontmatter'

@@ -22,6 +22,8 @@ function saveInformation() {
     article.value = data.value.content
 
     for (let key in articleInfo.value) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       articleInfo.value[key] = data.value[key]
     }
   }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import UploadFile from '~/components/Public/UploadFile.vue'
 import { useArticle } from '~/composables/states'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { Editor } from '@bytemd/vue-next'
 import 'bytemd/dist/index.css'
 import zhHans from 'bytemd/locales/zh_Hans.json'
