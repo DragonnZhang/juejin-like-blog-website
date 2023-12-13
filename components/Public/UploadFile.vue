@@ -70,7 +70,7 @@ async function handleFileChange(e: Event) {
 </script>
 
 <template>
-  <ClientOnly>
-    <input :id="id" type="file" :onchange="handleFileChange" :accept="accept" v-show="false" />
-  </ClientOnly>
+  <!-- <ClientOnly> -->
+  <input :id="id" type="file" :onchange="handleFileChange" :accept="accept" v-show="false" />
+  <!-- </ClientOnly> -->
 </template>

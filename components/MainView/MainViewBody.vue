@@ -22,12 +22,12 @@ import MainViewRightSideBar from '~/components/MainView/MainViewRightSideBar.vue
             </nav>
           </header>
           <div class="entry-list-wrap">
-            <ClientOnly>
-              <Suspense>
-                <MainViewBodyCardList />
-                <template #fallback><MainViewBodyLoadingSkeleton /></template>
-              </Suspense>
-            </ClientOnly>
+            <!-- <ClientOnly> -->
+            <Suspense>
+              <MainViewBodyCardList />
+              <template #fallback><MainViewBodyLoadingSkeleton /></template>
+            </Suspense>
+            <!-- </ClientOnly> -->
           </div>
         </div>
       </div>
