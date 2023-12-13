@@ -27,6 +27,7 @@
     "@bytemd/plugin-highlight-ssr": "^1.21.0",
     "@bytemd/plugin-mermaid": "^1.21.0",
     "@bytemd/vue-next": "^1.21.0",
+    "@vercel/speed-insights": "^1.0.1",
     "bytemd": "^1.21.0",
     "juejin-markdown-themes": "^1.34.0",
     "lodash": "^4.17.21",
