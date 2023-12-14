@@ -21,8 +21,8 @@ function saveInformation() {
   if (data.value) {
     article.value = data.value.content
 
-    for (const key of Object.keys(articleInfo.value)) {
-      articleInfo.value[key as keyof typeof articleInfo.value] = data.value[key as keyof typeof articleInfo.value] as never
+    for (const key of Object.keys(articleInfo.value) as (keyof typeof articleInfo.value)[]) {
+      articleInfo.value[key] = data.value[key] as never
     }
   }
 }
