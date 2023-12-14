@@ -21,10 +21,8 @@ function saveInformation() {
   if (data.value) {
     article.value = data.value.content
 
-    for (let key in articleInfo.value) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      articleInfo.value[key] = data.value[key]
+    for (const key of Object.keys(articleInfo.value)) {
+      articleInfo.value[key as keyof typeof articleInfo.value] = data.value[key as keyof typeof articleInfo.value] as never
     }
   }
 }
