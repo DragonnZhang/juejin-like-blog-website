@@ -151,27 +151,31 @@ onMounted(() => {
     <div class="right-box">
       <div class="publish-popup">
         <BlockButton id="publish-button" type="primary" size="medium" @click="switchPanel">{{ update ? '更新' : '发布' }}</BlockButton>
-        <Panel :relate-el="publish" v-model="displayPanel" title="发布文章">
-          <FormItem label="分类：" :required="true">
-            <ChoiceBlock v-model="articleInfo.type" :choices="choices" />
-          </FormItem>
-          <FormItem label="添加标签：" :required="true">
-            <Select :selection="selection" v-model="articleInfo.tags" :max-length="3"></Select>
-          </FormItem>
-          <FormItem label="文章封面：">
-            <UploadImage v-model="articleInfo.imgUrl" />
-          </FormItem>
-          <FormItem label="编辑摘要：" :required="true">
-            <TextArea v-model="articleInfo.abstract" />
-          </FormItem>
-          <template #footer>
-            <div class="btn-container">
-              <BlockButton type="line" size="thin" style="margin-right: 16px" @click="switchPanel">取消</BlockButton>
-              <BlockButton v-if="!update" type="primary" size="thin" @click="publishArticle">确定并发布</BlockButton>
-              <BlockButton v-else type="primary" size="thin" @click="updateArticle">确定并更新</BlockButton>
-            </div>
-          </template>
-        </Panel>
+        <ClientOnly>
+          <Suspense>
+            <Panel :relate-el="publish" v-model="displayPanel" title="发布文章">
+              <FormItem label="分类：" :required="true">
+                <ChoiceBlock v-model="articleInfo.type" :choices="choices" />
+              </FormItem>
+              <FormItem label="添加标签：" :required="true">
+                <Select :selection="selection" v-model="articleInfo.tags" :max-length="3"></Select>
+              </FormItem>
+              <FormItem label="文章封面：">
+                <UploadImage v-model="articleInfo.imgUrl" />
+              </FormItem>
+              <FormItem label="编辑摘要：" :required="true">
+                <TextArea v-model="articleInfo.abstract" />
+              </FormItem>
+              <template #footer>
+                <div class="btn-container">
+                  <BlockButton type="line" size="thin" style="margin-right: 16px" @click="switchPanel">取消</BlockButton>
+                  <BlockButton v-if="!update" type="primary" size="thin" @click="publishArticle">确定并发布</BlockButton>
+                  <BlockButton v-else type="primary" size="thin" @click="updateArticle">确定并更新</BlockButton>
+                </div>
+              </template>
+            </Panel>
+          </Suspense>
+        </ClientOnly>
       </div>
     </div>
   </header>
