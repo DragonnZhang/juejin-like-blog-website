@@ -20,10 +20,12 @@ function handleChange(v: string) {
 </script>
 
 <template>
-  <div class="main">
-    <Editor :plugins="plugins" :value="article" @change="handleChange" :locale="zhHans" />
-    <UploadFile id="upload-markdown" v-model="article" type="md" />
-  </div>
+  <RenderCacheable>
+    <div class="main">
+      <Editor :plugins="plugins" :value="article" @change="handleChange" :locale="zhHans" />
+      <UploadFile id="upload-markdown" v-model="article" type="md" />
+    </div>
+  </RenderCacheable>
 </template>
 
 <style scoped lang="scss" src="~/assets/stylesheets/editor.scss"></style>
