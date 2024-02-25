@@ -1,10 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['nuxt-multi-cache'],
+  modules: ['nuxt-multi-cache', '@nuxtjs/sentry'],
   multiCache: {
     component: {
       enabled: true
     }
+  },
+  sentry: {
+    dsn: 'https://13568e5ecb31863d4e97602d96bc3528@o4506807408984064.ingest.sentry.io/4506807418552320'
   },
   devtools: { enabled: true },
   pages: true,
