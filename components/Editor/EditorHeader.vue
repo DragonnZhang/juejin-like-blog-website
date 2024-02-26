@@ -134,7 +134,7 @@ function switchPanel() {
 const choices = ['后端', '前端', 'Android', 'iOS', '人工智能', '开发工具', '代码人生', '阅读']
 
 // Select
-const selection = ['面试', '前端', '后端', 'AI', 'Github', 'JavaScript', '1', '2', '3']
+const selection = ['面试', '前端', '后端', 'AI', 'Github', 'JavaScript']
 
 // Publish
 const publish = ref()
