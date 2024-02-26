@@ -1,4 +1,6 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { visualizer } from 'rollup-plugin-visualizer'
+import viteCompression from 'vite-plugin-compression'
+
 export default defineNuxtConfig({
   modules: ['nuxt-multi-cache'],
   multiCache: {
@@ -32,5 +34,13 @@ export default defineNuxtConfig({
     '/public/**': {
       headers: { 'cache-control': 's-maxage=31536000' }
     }
+  },
+  vite: {
+    plugins: [
+      visualizer(),
+      viteCompression({
+        threshold: 102400
+      })
+    ]
   }
 })

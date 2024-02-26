@@ -4,6 +4,7 @@
 .nitro
 .cache
 dist
+stats.html
 
 # Node dependencies
 node_modules
