@@ -38,11 +38,11 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [
-      visualizer(),
       viteCompression({
         threshold: 102400
       }),
-      splitVendorChunkPlugin()
+      splitVendorChunkPlugin(),
+      visualizer()
     ]
   }
 })

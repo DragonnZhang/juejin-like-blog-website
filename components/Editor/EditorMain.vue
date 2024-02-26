@@ -8,11 +8,10 @@ import 'bytemd/dist/index.css'
 import zhHans from 'bytemd/locales/zh_Hans.json'
 import highlight from '@bytemd/plugin-highlight-ssr'
 import frontmatter from '@bytemd/plugin-frontmatter'
-import mermaid from '@bytemd/plugin-mermaid'
 import { highlightPlugin, themePlugin, importPlugin } from '~/utils/editorPlugin'
 
 const article = useArticle()
-const plugins = ref([highlight(), frontmatter(), mermaid(), highlightPlugin(), themePlugin(), importPlugin()])
+const plugins = ref([highlight(), frontmatter(), highlightPlugin(), themePlugin(), importPlugin()])
 
 function handleChange(v: string) {
   article.value = v
