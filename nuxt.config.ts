@@ -1,5 +1,6 @@
 import { visualizer } from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
+import { splitVendorChunkPlugin } from 'vite'
 
 export default defineNuxtConfig({
   modules: ['nuxt-multi-cache'],
@@ -40,7 +41,8 @@ export default defineNuxtConfig({
       visualizer(),
       viteCompression({
         threshold: 102400
-      })
+      }),
+      splitVendorChunkPlugin()
     ]
   }
 })
