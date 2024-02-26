@@ -6,6 +6,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "analyze": "nuxt analyze",
     "postinstall": "nuxt prepare",
     "check": "nuxt typecheck",
     "lint": "eslint ."
@@ -27,7 +28,6 @@
   "dependencies": {
     "@bytemd/plugin-frontmatter": "^1.21.0",
     "@bytemd/plugin-highlight-ssr": "^1.21.0",
-    "@bytemd/plugin-mermaid": "^1.21.0",
     "@bytemd/vue-next": "^1.21.0",
     "@vercel/speed-insights": "^1.0.1",
     "bytemd": "^1.21.0",
