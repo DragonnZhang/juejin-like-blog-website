@@ -11,7 +11,7 @@ import frontmatter from '@bytemd/plugin-frontmatter'
 import { highlightPlugin, themePlugin, importPlugin } from '~/utils/editorPlugin'
 
 const article = useArticle()
-const plugins = ref([highlight(), frontmatter(), highlightPlugin(), themePlugin(), importPlugin()])
+const plugins = ref([highlight(), frontmatter(), themePlugin(), highlightPlugin(), importPlugin()])
 
 function handleChange(v: string) {
   article.value = v

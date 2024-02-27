@@ -1,39 +1,36 @@
 import type { BytemdPlugin } from 'bytemd'
 import highlightStyle from './highlightStyle'
 import themeStyle from './themeStyle'
+import { singleStyle } from './util'
 
-const singleStyle = () => {
-  let style: undefined | HTMLStyleElement
-  return function () {
-    if (!style) {
-      style = document.createElement('style')
-      document.head.appendChild(style)
-    }
-    return style
-  }
-}
 const singleHighlightStyle = singleStyle()
 const singleThemeStyle = singleStyle()
 
-const highlightOption = [
-  {
-    title: 'github'
-  }
-]
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let frontmatterObj: any
+
 export function highlightPlugin(): BytemdPlugin {
+  const highlightOption = [
+    {
+      title: 'github'
+    }
+  ]
+
   return {
     viewerEffect({ file }) {
       const style = singleHighlightStyle()
 
+      frontmatterObj = file.frontmatter
+
       if (!file.frontmatter) {
-        style.innerHTML = highlightStyle['github']
+        style.innerHTML = ''
         return
       }
 
       const { highlight } = file.frontmatter as { highlight: string }
 
       if (highlight) {
-        style.innerHTML = highlightStyle[highlight as keyof typeof highlightStyle] ?? highlightStyle.github
+        style.innerHTML = highlightStyle[highlight as keyof typeof highlightStyle] || ''
       } else {
         style.innerHTML = ''
       }
@@ -53,8 +50,27 @@ export function highlightPlugin(): BytemdPlugin {
             title,
             handler: {
               type: 'action',
-              click({ editor, appendBlock, codemirror, root }) {
-                // 需要自己写一个方法添加 or 替换属性
+              click({ editor }) {
+                const value = editor.getValue()
+                // 1. Without frontmatter: add a new frontmatter
+                if (!frontmatterObj) {
+                  const newFrontmatter = `---\nhighlight: ${title}\n---\n\n`
+                  editor.setValue(newFrontmatter + value)
+                } else {
+                  const match = value.match(/^---(.|\n)*---/)
+                  if (match) {
+                    // 2. Has highlight property: replace value
+                    if (frontmatterObj.highlight) {
+                      const newFrontmatter = match[0].replace(/highlight: .*/g, `highlight: ${title}`)
+                      editor.setValue(value.replace(match[0], newFrontmatter))
+                    } else {
+                      // 3. Without highlight property, has theme prop: add highlight
+                      const newFrontmatter = match[0].replace(/theme: .*/g, `$&\nhighlight: ${title}`)
+                      editor.setValue(value.replace(match[0], newFrontmatter))
+                    }
+                  }
+                }
+                editor.focus()
               }
             }
           }))
@@ -65,23 +81,73 @@ export function highlightPlugin(): BytemdPlugin {
 }
 
 export function themePlugin(): BytemdPlugin {
+  const themeOption = [
+    {
+      title: 'juejin'
+    }
+  ]
+
   return {
     viewerEffect({ file }) {
       const style = singleThemeStyle()
 
+      frontmatterObj = file.frontmatter
+
       if (!file.frontmatter) {
-        style.innerHTML = themeStyle['juejin']
+        style.innerHTML = ''
         return
       }
 
       const { theme } = file.frontmatter as { theme: string }
 
       if (theme) {
-        style.innerHTML = themeStyle[theme as keyof typeof themeStyle] ?? ''
+        style.innerHTML = themeStyle[theme as keyof typeof themeStyle] || ''
       } else {
         style.innerHTML = ''
       }
-    }
+    },
+    actions: [
+      {
+        title: 'Markdown 主题',
+        icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 2H2.66667C2.29848 2 2 2.29848 2 2.66667V6C2 6.36819 2.29848 6.66667 2.66667 6.66667H6C6.36819 6.66667 6.66667 6.36819 6.66667 6V2.66667C6.66667 2.29848 6.36819 2 6 2Z" stroke="currentColor" stroke-width="1.33" stroke-linejoin="round"></path>
+      <path d="M6 9.3335H2.66667C2.29848 9.3335 2 9.63197 2 10.0002V13.3335C2 13.7017 2.29848 14.0002 2.66667 14.0002H6C6.36819 14.0002 6.66667 13.7017 6.66667 13.3335V10.0002C6.66667 9.63197 6.36819 9.3335 6 9.3335Z" stroke="currentColor" stroke-width="1.33" stroke-linejoin="round"></path>
+      <path d="M13.3334 2H10C9.63185 2 9.33337 2.29848 9.33337 2.66667V6C9.33337 6.36819 9.63185 6.66667 10 6.66667H13.3334C13.7016 6.66667 14 6.36819 14 6V2.66667C14 2.29848 13.7016 2 13.3334 2Z" stroke="currentColor" stroke-width="1.33" stroke-linejoin="round"></path>
+      <path d="M13.3334 9.3335H10C9.63185 9.3335 9.33337 9.63197 9.33337 10.0002V13.3335C9.33337 13.7017 9.63185 14.0002 10 14.0002H13.3334C13.7016 14.0002 14 13.7017 14 13.3335V10.0002C14 9.63197 13.7016 9.3335 13.3334 9.3335Z" stroke="currentColor" stroke-width="1.33" stroke-linejoin="round"></path>
+      </svg>`,
+        cheatsheet: '```mermaid',
+        handler: {
+          type: 'dropdown',
+          actions: themeOption.map(({ title }) => ({
+            title,
+            handler: {
+              type: 'action',
+              click({ editor }) {
+                // 需要自己写一个方法添加 or 替换属性
+                const value = editor.getValue()
+
+                if (!frontmatterObj) {
+                  const newFrontmatter = `---\ntheme: ${title}\n---\n\n`
+                  editor.setValue(newFrontmatter + value)
+                } else {
+                  const match = value.match(/^---(.|\n)*---/)
+                  if (match) {
+                    if (frontmatterObj.theme) {
+                      const newFrontmatter = match[0].replace(/theme: .*/g, `theme: ${title}`)
+                      editor.setValue(value.replace(match[0], newFrontmatter))
+                    } else {
+                      const newFrontmatter = match[0].replace(/highlight: .*/g, `$&\ntheme: ${title}`)
+                      editor.setValue(value.replace(match[0], newFrontmatter))
+                    }
+                  }
+                }
+                editor.focus()
+              }
+            }
+          }))
+        }
+      }
+    ]
   }
 }
 
