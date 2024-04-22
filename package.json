@@ -1,6 +1,7 @@
 {
-  "name": "nuxt-app",
+  "name": "juejin-like-blog-website",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
