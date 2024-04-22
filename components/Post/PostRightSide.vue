@@ -1,7 +1,5 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div class="sidebar article-sidebar"></div>
+  <div class="sidebar"></div>
 </template>
 
 <style scoped lang="scss">
@@ -11,9 +9,6 @@
   right: 0;
   bottom: 0;
   width: 25rem;
-}
-
-.sidebar {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;

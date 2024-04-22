@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import View from '~/components/SVG/View.vue'
-import Like from '~/components/SVG/Like.vue'
-import type { MainData } from '~/utils/type'
+import View from '~/components/Svg/View.vue'
+import Like from '~/components/Svg/Like.vue'
+import type { MainData } from '~/types/mainPage'
+
+const router = useRouter()
 
 const props = defineProps<{
   data: MainData
 }>()
 
-const { data } = toRefs(props)
-
-const router = useRouter()
 function redirect(e: Event) {
   if (e.target === e.currentTarget) {
-    const url = router.resolve(`/post/${data.value.articleId}`)
+    const url = router.resolve(`/post/${props.data.articleId}`)
     window.open(url.href)
   }
 }

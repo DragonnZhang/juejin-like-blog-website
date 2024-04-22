@@ -1,6 +1,11 @@
 <script setup lang="ts" generic="T">
-import type { VirtualListProps } from '~/utils/type'
 import { throttle } from 'lodash-es'
+
+type VirtualListProps<T> = {
+  itemHeight: number
+  dataSource: T[]
+  viewHeight: number
+}
 
 const props = defineProps<VirtualListProps<T & { articleId: string }>>()
 const emit = defineEmits<{

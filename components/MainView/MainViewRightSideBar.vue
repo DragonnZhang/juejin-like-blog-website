@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <aside class="index-aside aside"></aside>
 </template>

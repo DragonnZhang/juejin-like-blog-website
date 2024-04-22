@@ -10,16 +10,15 @@ const data = (
       id
     }
   })
-).data as Ref<Article>
+).data
 
-const article = useArticle()
-const articleInfo = useArticleInformation() as Ref<ArticleState>
+const articleInfo = useArticleInformation()
 
 saveInformation()
 
 function saveInformation() {
   if (data.value) {
-    article.value = data.value.content
+    articleInfo.value.content = data.value.content
 
     for (const key of Object.keys(articleInfo.value) as (keyof typeof articleInfo.value)[]) {
       articleInfo.value[key] = data.value[key] as never

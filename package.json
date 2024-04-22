@@ -8,7 +8,7 @@
     "preview": "nuxt preview",
     "analyze": "nuxt analyze",
     "postinstall": "nuxt prepare",
-    "check": "nuxt typecheck",
+    "typecheck": "nuxt typecheck",
     "lint": "eslint ."
   },
   "devDependencies": {

@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 
-const config = useRuntimeConfig()
+const { mongoUrl, mongoUsername, mongoPwd } = useRuntimeConfig()
 
 export default defineNitroPlugin(async () => {
   try {
-    await mongoose.connect(config.mongoUrl, {
-      user: config.mongoUsername,
-      pass: config.mongoPwd
+    await mongoose.connect(mongoUrl, {
+      user: mongoUsername,
+      pass: mongoPwd
     })
     console.log('Database connected successfully!')
   } catch (e) {

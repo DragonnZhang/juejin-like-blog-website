@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="skeleton skeleton-animated">
     <div class="skeleton-item">

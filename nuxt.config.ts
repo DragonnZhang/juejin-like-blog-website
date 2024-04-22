@@ -4,6 +4,7 @@ import { splitVendorChunkPlugin } from 'vite'
 
 export default defineNuxtConfig({
   modules: ['nuxt-multi-cache'],
+  // component cache
   multiCache: {
     component: {
       enabled: true
@@ -11,14 +12,13 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   pages: true,
+  // environment variables
   runtimeConfig: {
     mongoUrl: '',
     mongoUsername: '',
     mongoPwd: ''
   },
-  vue: {
-    defineModel: true
-  },
+  // http cache
   routeRules: {
     '/': {
       static: true,

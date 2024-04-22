@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import Following from '~/components/SVG/Following.vue'
-import Recommended from '~/components/SVG/Recommended.vue'
-import Backend from '~/components/SVG/Backend.vue'
-import Frontend from '~/components/SVG/Frontend.vue'
-import Android from '~/components/SVG/Android.vue'
-import Ios from '~/components/SVG/Ios.vue'
-import Ai from '~/components/SVG/Ai.vue'
-import Freebie from '~/components/SVG/Freebie.vue'
-import Career from '~/components/SVG/Career.vue'
-import Article from '~/components/SVG/Article.vue'
+import Following from '~/components/Svg/Following.vue'
+import Recommended from '~/components/Svg/Recommended.vue'
+import Backend from '~/components/Svg/Backend.vue'
+import Frontend from '~/components/Svg/Frontend.vue'
+import Android from '~/components/Svg/Android.vue'
+import Ios from '~/components/Svg/Ios.vue'
+import Ai from '~/components/Svg/Ai.vue'
+import Freebie from '~/components/Svg/Freebie.vue'
+import Career from '~/components/Svg/Career.vue'
+import Article from '~/components/Svg/Article.vue'
 import { useTopVanish } from '~/composables/states'
 
 const topVanish = useTopVanish()
@@ -29,16 +29,14 @@ function getComponent(s: string) {
   return strategy[s as keyof typeof strategy]
 }
 
-type SideBarData = {
-  text: string
-  url: string
-}
-
 defineProps<{
-  data: SideBarData[]
+  data: {
+    text: string
+    url: string
+  }[]
 }>()
 
-function isActive(url: string, path: string) {
+function isRouteActive(url: string, path: string) {
   return url === path || (path === '/' && url === '/recommended')
 }
 </script>
@@ -47,8 +45,8 @@ function isActive(url: string, path: string) {
   <div class="index-nav" :class="{ top: topVanish }">
     <nav class="side-navigator-wrap">
       <div class="nav-item-wrap" v-for="d in data" :key="d.text">
-        <div class="nav-item-content" :class="{ 'active-nav': isActive(d.url, $route.path) }">
-          <NuxtLink class="nav-item" :to="d.url" :class="{ 'route-active': isActive(d.url, $route.path) }">
+        <div class="nav-item-content" :class="{ 'active-nav': isRouteActive(d.url, $route.path) }">
+          <NuxtLink class="nav-item" :to="d.url" :class="{ 'route-active': isRouteActive(d.url, $route.path) }">
             <component :is="getComponent(d.url.slice(1))"></component>
             <span class="nav-item-text">{{ d.text }}</span>
           </NuxtLink>

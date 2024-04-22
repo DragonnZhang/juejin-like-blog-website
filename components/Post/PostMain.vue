@@ -3,7 +3,7 @@ import PostContent from './PostContent.vue'
 import PostLeftSide from './PostLeftSide.vue'
 import PostRecommendation from './PostRecommendation.vue'
 import PostRightSide from './PostRightSide.vue'
-import type { Article } from '~/utils/type'
+import type { Article } from '~/types/article'
 
 const props = defineProps<{
   id: string

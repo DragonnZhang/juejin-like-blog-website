@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import View from '../SVG/View.vue'
-import Time from '../SVG/Time.vue'
+import View from '../Svg/View.vue'
+import Time from '../Svg/Time.vue'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import { Viewer } from '@bytemd/vue-next'

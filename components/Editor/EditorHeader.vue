@@ -6,8 +6,8 @@ import TextArea from '~/components/Public/TextArea.vue'
 import UploadImage from '~/components/Public/UploadImage.vue'
 import ChoiceBlock from '~/components/Public/ChoiceBlock.vue'
 import Select from '~/components/Public/Select.vue'
-import { useArticle, useArticleInformation } from '~/composables/states'
-import type { Validation, Article, ValidationKey } from '~/utils/type'
+import type { Validation, ValidationKey } from '~/types/validator'
+import type { Article } from '~/types/article'
 import { validateString, validateStringArray } from '~/utils/util'
 
 withDefaults(
@@ -19,7 +19,6 @@ withDefaults(
   }
 )
 
-const article = useArticle()
 const articleInfo = useArticleInformation()
 
 const validator: Validation = {
@@ -62,25 +61,14 @@ function validateData(): boolean | string {
 
 const body: Ref<Article> = computed(() => {
   return {
-    articleId: articleInfo.value.articleId,
-    title: articleInfo.value.title,
-    abstract: articleInfo.value.abstract,
-    author: articleInfo.value.author,
-    publishTime: new Date(),
-    content: article.value,
-    views: articleInfo.value.views,
-    likes: articleInfo.value.likes,
-    collections: articleInfo.value.collections,
-    comments: articleInfo.value.comments,
-    imgUrl: articleInfo.value.imgUrl,
-    tags: articleInfo.value.tags,
-    type: articleInfo.value.type
+    ...articleInfo.value,
+    publishTime: new Date()
   }
 })
 
 const tags = computed(() => {
   return {
-    tags: body.value.tags.map((tag) => {
+    tags: articleInfo.value.tags.map((tag) => {
       return {
         tag
       }
@@ -98,7 +86,10 @@ async function publishArticle() {
 
   await useFetch('/api/saveArticle', {
     method: 'POST',
-    body: Object.assign({}, body.value, tags.value)
+    body: {
+      ...body.value,
+      ...tags.value
+    }
   })
 
   switchPanel()
@@ -116,7 +107,10 @@ async function updateArticle() {
 
   await useFetch('/api/updateArticle', {
     method: 'POST',
-    body: Object.assign({}, body.value, tags.value)
+    body: {
+      ...body.value,
+      ...tags.value
+    }
   })
 
   switchPanel()

@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { useTopVanish } from '~/composables/states'
-type NavData = {
-  text: string
-  url: string
-  relate?: string[]
-}
-type NavDataList = {
-  data: NavData[]
+
+defineProps<{
+  data: {
+    text: string
+    url: string
+    relate?: string[]
+  }[]
   avatarURL: string
-}
-defineProps<NavDataList>()
+}>()
 
 const topVanish = useTopVanish()
 

@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="main-area recommended-area entry-list-container shadow"></div>
+  <div class="main-area shadow"></div>
 </template>
 
 <style scoped lang="scss">

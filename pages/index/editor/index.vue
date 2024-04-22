@@ -7,7 +7,8 @@ import EditorMain from '~/components/Editor/EditorMain.vue'
   <Head>
     <Title>写文章</Title>
   </Head>
-  <div class="editor">
+
+  <div>
     <EditorHeader />
     <EditorMain />
   </div>

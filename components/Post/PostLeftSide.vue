@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LeftButton from '~/components/Public/LeftButton.vue'
-import LeftBar from '~/components/SVG/LeftBar.vue'
+import LeftBar from '~/components/Svg/LeftBar.vue'
 
 defineProps<{
   id: string

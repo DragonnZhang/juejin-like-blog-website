@@ -1,5 +1,5 @@
 import articleModel from '../models/article'
-import type { Article } from '~/utils/type'
+import type { Article } from '~/types/article'
 
 export default defineEventHandler(async (event) => {
   const { id } = await readBody(event)
